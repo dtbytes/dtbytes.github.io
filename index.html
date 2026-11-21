@@ -6,6 +6,11 @@
   <title>DT Bytes (@dtbytes) — Be Techy. Be Trading.</title>
   <meta name="description" content="Official creator hub, daily blog, and newsletter of DT Bytes (@dtbytes) by Debasish Mondal. Practical tech troubleshooting, honest gadget reviews, scam alerts, and disciplined crypto & trading education." />
   <meta name="google-adsense-account" content="ca-pub-1140913316303493" />
+  <link rel="icon" type="image/jpeg" href="logo.jpg" />
+  <link rel="apple-touch-icon" href="logo.jpg" />
+  <meta property="og:title" content="DT Bytes (@dtbytes) — Be Techy. Be Trading." />
+  <meta property="og:description" content="Official creator hub, daily blog, and newsletter of DT Bytes (@dtbytes)." />
+  <meta property="og:image" content="logo.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -20,6 +25,7 @@
       --gold: #D4AF37;
       --gold-light: #F3D577;
       --gold-dim: #9A7B1C;
+      --cyan-glow: rgba(34, 211, 238, 0.35);
       --emerald: #10B981;
       --crimson: #EF4444;
       --text-primary: #F8FAFC;
@@ -67,11 +73,13 @@
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-primary); }
 
     .brand-mark {
-      width: 42px; height: 42px; border-radius: 12px;
-      background: linear-gradient(135deg, #D4AF37 0%, #8E6E14 100%);
-      display: grid; place-items: center; font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 16px; color: #060D1A;
-      box-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
+      width: 44px; height: 44px; border-radius: 12px; overflow: hidden; padding: 0;
+      border: 1.5px solid rgba(212, 175, 55, 0.55);
+      box-shadow: 0 0 22px var(--cyan-glow);
+      flex-shrink: 0; background: var(--bg-navy);
+    }
+    .brand-mark img, .avatar-inner img {
+      width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;
     }
 
     .brand-text strong { display: block; font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; line-height: 1.1; }
@@ -141,8 +149,12 @@
 
     .creator-card-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
     .creator-identity { display: flex; align-items: center; gap: 14px; }
-    .avatar-ring { width: 58px; height: 58px; border-radius: 18px; padding: 2px; background: linear-gradient(135deg, var(--gold-light), var(--gold-dim)); }
-    .avatar-inner { width: 100%; height: 100%; border-radius: 16px; background: var(--bg-navy); display: grid; place-items: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; color: var(--gold-light); }
+    .avatar-ring {
+      width: 62px; height: 62px; border-radius: 18px; padding: 2px;
+      background: linear-gradient(135deg, var(--gold-light), #22D3EE);
+      box-shadow: 0 0 24px var(--cyan-glow); flex-shrink: 0;
+    }
+    .avatar-inner { width: 100%; height: 100%; border-radius: 16px; background: var(--bg-navy); overflow: hidden; }
 
     .handle-badge {
       display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px;
@@ -408,7 +420,7 @@
     <header>
       <div class="container nav-inner">
         <a href="#top" class="brand">
-          <div class="brand-mark">DT</div>
+          <div class="brand-mark"><img src="logo.jpg" alt="DT Bytes Logo" /></div>
           <div class="brand-text">
             <strong>DT Bytes</strong>
             <span>@dtbytes</span>
@@ -473,7 +485,7 @@
           <div class="creator-card" id="tiltCard">
             <div class="creator-card-header">
               <div class="creator-identity">
-                <div class="avatar-ring"><div class="avatar-inner">DT</div></div>
+                <div class="avatar-ring"><div class="avatar-inner"><img src="logo.jpg" alt="DT Bytes Logo" /></div></div>
                 <div>
                   <h3 style="font-size: 20px; line-height: 1.1;">DT Bytes</h3>
                   <span style="font-size: 13px; color: var(--text-secondary);">Debasish Mondal • Mr. D</span>
@@ -757,7 +769,10 @@
     <footer>
       <div class="container">
         <div class="footer-inner">
-          <div class="brand"><div class="brand-mark">DT</div><div class="brand-text"><strong>DT Bytes</strong><span>Be Techy, Be Trading • @dtbytes</span></div></div>
+          <div class="brand">
+            <div class="brand-mark"><img src="logo.jpg" alt="DT Bytes Logo" /></div>
+            <div class="brand-text"><strong>DT Bytes</strong><span>Be Techy, Be Trading • @dtbytes</span></div>
+          </div>
           <div class="footer-links">
             <span>Debasish Mondal (Mr. D)</span>
             <span>•</span>
@@ -1298,7 +1313,6 @@
       showToast("Article text copied!");
     });
 
-    // Legal Modals (AdSense Compliance)
     const legalModal = document.getElementById("legalModal"), legalTitle = document.getElementById("legalTitle"), legalBody = document.getElementById("legalBody");
     const privacyHtml = `
       <p><strong>Effective Date:</strong> November 2026</p>
