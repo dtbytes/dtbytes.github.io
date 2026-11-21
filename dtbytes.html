@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DT Bytes | Tech • Trading • Insights</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #070B14; color: #F8FAFC; }
+    .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(56, 189, 248, 0.15); }
+    .glow-cyan { box-shadow: 0 0 25px rgba(14, 165, 233, 0.25); }
+    .gradient-text { background: linear-gradient(90deg, #38BDF8, #818CF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+<body class="antialiased selection:bg-sky-500 selection:text-white">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 glass border-b border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-sky-400 to-blue-700 flex items-center justify-center font-extrabold text-sm tracking-tighter text-white shadow-lg">
+          DTB
+        </div>
+        <span class="font-bold text-lg tracking-tight">DT Bytes</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#videos" class="hover:text-sky-400 transition">Videos</a>
+        <a href="#series" class="hover:text-sky-400 transition">100 Days Trading</a>
+        <a href="#resources" class="hover:text-sky-400 transition">Guides & Tools</a>
+      </div>
+      <a href="https://www.youtube.com/@dtbytes?sub_confirmation=1" target="_blank"
+         class="bg-red-600 hover:bg-red-500 text-white text-sm font-semibold px-4 py-2 rounded-full transition flex items-center gap-2 shadow-md">
+        <span>Subscribe</span>
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative pt-32 pb-20 px-4 sm:px-6 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/30 via-slate-950 to-slate-950 -z-10"></div>
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-semibold text-sky-400 mb-6">
+        <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+        TECH • TRADING • INSIGHTS
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+        Smart Tech Reviews & <br class="hidden sm:block" />
+        <span class="gradient-text">Disciplined Trading</span> Insights
+      </h1>
+      <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+        Honest gadget unboxings, real-world tech troubleshooting, and risk-first trading psychology—cut straight to the point without the fluff.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#videos" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold transition glow-cyan">
+          Explore Latest Videos
+        </a>
+        <a href="https://www.youtube.com/@dtbytes" target="_blank" class="w-full sm:w-auto px-7 py-3.5 rounded-xl glass hover:border-sky-400/50 font-semibold transition">
+          Visit @dtbytes on YouTube
+        </a>
+      </div>
+
+      <!-- Channel Stats Bar -->
+      <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mt-14 pt-8 border-t border-slate-800/80">
+        <div>
+          <div class="text-2xl font-extrabold text-white">20+</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Videos & Shorts</div>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold text-sky-400">15K+</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Total Views</div>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold text-white">100%</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Unfiltered</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filterable Video Showcase -->
+  <section id="videos" class="py-16 px-4 sm:px-6 max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold">Featured Content</h2>
+        <p class="text-slate-400 text-sm mt-1">Filter by category to find what you need fast.</p>
+      </div>
+      <div class="flex flex-wrap gap-2" id="filter-buttons">
+        <button data-filter="all" class="filter-btn active px-4 py-1.5 rounded-lg text-sm font-medium bg-sky-500 text-slate-950 transition">All</button>
+        <button data-filter="tech" class="filter-btn px-4 py-1.5 rounded-lg text-sm font-medium glass text-slate-300 hover:text-white transition">Tech & Reviews</button>
+        <button data-filter="trading" class="filter-btn px-4 py-1.5 rounded-lg text-sm font-medium glass text-slate-300 hover:text-white transition">Trading</button>
+        <button data-filter="guides" class="filter-btn px-4 py-1.5 rounded-lg text-sm font-medium glass text-slate-300 hover:text-white transition">Fixes & Alerts</button>
+      </div>
+    </div>
+
+    <!-- Video Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-grid">
+
+      <!-- Card 1 -->
+      <article data-category="tech" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
+        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
+          <span class="absolute top-3 left-3 bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">Tech Review</span>
+          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">15:35</span>
+          <div class="text-center p-4">
+            <p class="text-xs uppercase tracking-widest text-slate-400">Most Popular • 7.3K Views</p>
+            <p class="font-bold text-lg text-white mt-1">Casio F91W Authenticity Check</p>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-base leading-snug mb-2">Kya Ye Original Casio Hai? F91W Unboxing & Amazon Seller Reality</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Complete breakdown on spotting genuine vs. fake Casio F91W watches and avoiding seller negligence.</p>
+          </div>
+          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
+            Watch on YouTube →
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article data-category="guides" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
+        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
+          <span class="absolute top-3 left-3 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">Crypto Fix</span>
+          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">05:40</span>
+          <div class="text-center p-4">
+            <p class="text-xs uppercase tracking-widest text-slate-400">5.8K Views</p>
+            <p class="font-bold text-lg text-white mt-1">CoinDCX USDT Deposit Fix</p>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-base leading-snug mb-2">CoinDCX Crypto Deposit Not Showing! USDT Error Solved Instantly</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Step-by-step troubleshooting to recover stuck USDT deposits and verify network hashes properly.</p>
+          </div>
+          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
+            Watch on YouTube →
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article data-category="tech" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
+        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
+          <span class="absolute top-3 left-3 bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">Smartphone</span>
+          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">10:21</span>
+          <div class="text-center p-4">
+            <p class="text-xs uppercase tracking-widest text-slate-400">1.8K Views</p>
+            <p class="font-bold text-lg text-white mt-1">Samsung S20 FE 5G Honest Review</p>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-base leading-snug mb-2">S20 FE 5G Lena Chahiye Ya Nahi? Full Honest Long-Term Review</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Real battery life, camera performance, and value-for-money verdict before you spend your money.</p>
+          </div>
+          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
+            Watch on YouTube →
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article data-category="trading" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
+        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
+          <span class="absolute top-3 left-3 bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">100 Days Trading</span>
+          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">03:19</span>
+          <div class="text-center p-4">
+            <p class="text-xs uppercase tracking-widest text-slate-400">Day 1 Series</p>
+            <p class="font-bold text-lg text-white mt-1">Stop Predicting, Manage Risk</p>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-base leading-snug mb-2">Day 1: What Trading REALLY Is | 100 Days Trading Journey</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Why successful traders focus on probability and position sizing instead of guessing market tops.</p>
+          </div>
+          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
+            Watch on YouTube →
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article data-category="trading" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
+        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
+          <span class="absolute top-3 left-3 bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">Risk & Reward</span>
+          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">Short</span>
+          <div class="text-center p-4">
+            <p class="text-xs uppercase tracking-widest text-slate-400">Day 3 • Trading Math</p>
+            <p class="font-bold text-lg text-white mt-1">Lose More & Still Profit</p>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-base leading-snug mb-2">Day 3: You Can Lose More Trades & Still Make Money</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">How asymmetric Risk-to-Reward ratios keep your account profitable even with a 40% win rate.</p>
+          </div>
+          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
+            Watch Short →
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article data-category="guides" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
+        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
+          <span class="absolute top-3 left-3 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">Mac & Scam Alerts</span>
+          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">10:33</span>
+          <div class="text-center p-4">
+            <p class="text-xs uppercase tracking-widest text-slate-400">Tech Tutorials</p>
+            <p class="font-bold text-lg text-white mt-1">Mac App Force-Delete & Scam Alerts</p>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-base leading-snug mb-2">Mac Apps Delete Nahi Hote? 100% Problem Solved (Hindi)</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Cleanly uninstall stubborn macOS apps along with hidden residual cache files.</p>
+          </div>
+          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
+            Watch on YouTube →
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 100 Days Trading Roadmap Section -->
+  <section id="series" class="py-16 px-4 sm:px-6 max-w-6xl mx-auto">
+    <div class="glass rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+      <div class="max-w-2xl">
+        <span class="text-sky-400 text-xs font-bold uppercase tracking-widest">Flagship Series</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold mt-2 mb-4">The Disciplined Trader Framework</h2>
+        <p class="text-slate-400 text-sm sm:text-base mb-8">
+          90% of traders fail because they treat the market like a casino. Follow the core pillars from our 100-Day Trading series:
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl">
+          <div class="text-sky-400 font-extrabold text-xl mb-2">01. Identity</div>
+          <p class="text-slate-300 text-sm">Define whether you are a scalper, swing trader, or investor before risking a single rupee.</p>
+        </div>
+        <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl">
+          <div class="text-sky-400 font-extrabold text-xl mb-2">02. Risk Control</div>
+          <p class="text-slate-300 text-sm">Trading vs. Gambling: strict stop-losses and position sizing protect you from account blowups.</p>
+        </div>
+        <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl">
+          <div class="text-sky-400 font-extrabold text-xl mb-2">03. Compounding</div>
+          <p class="text-slate-300 text-sm">How consistent 3% monthly gains outperform reckless high-leverage bets over time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community / Newsletter CTA -->
+  <section id="resources" class="py-16 px-4 sm:px-6 max-w-4xl mx-auto text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-3">Get Trading Checklists & Tech Deals</h2>
+    <p class="text-slate-400 text-sm mb-6">Join the DT Bytes community for risk-reward calculators, genuine gadget links, and new video alerts.</p>
+    <form id="subscribe-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      <input type="email" required placeholder="Enter your email..."
+             class="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-400" />
+      <button type="submit" class="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition">
+        Join Free
+      </button>
+    </form>
+    <p id="form-msg" class="text-emerald-400 text-xs mt-3 hidden">Thanks for joining DT Bytes! Check your inbox soon.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 py-8 px-4 text-center text-slate-500 text-xs">
+    <p>© 2026 DT Bytes (@dtbytes). Built for Tech, Trading & Insights.</p>
+  </footer>
+
+  <!-- Interactive Filtering & Form Script -->
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.video-card');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => {
+          b.classList.remove('bg-sky-500', 'text-slate-950');
+          b.classList.add('glass', 'text-slate-300');
+        });
+        btn.classList.add('bg-sky-500', 'text-slate-950');
+        btn.classList.remove('glass', 'text-slate-300');
+
+        const filter = btn.getAttribute('data-filter');
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    document.getElementById('subscribe-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('form-msg').classList.remove('hidden');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
