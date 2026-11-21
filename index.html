@@ -3,305 +3,1403 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DT Bytes | Tech • Trading • Insights</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>DT Bytes (@dtbytes) — Be Techy. Be Trading.</title>
+  <meta name="description" content="Official creator hub, daily blog, and newsletter of DT Bytes (@dtbytes) by Debasish Mondal. Practical tech troubleshooting, honest gadget reviews, scam alerts, and disciplined crypto & trading education." />
+  <meta name="google-adsense-account" content="ca-pub-1140913316303493" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #070B14; color: #F8FAFC; }
-    .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(56, 189, 248, 0.15); }
-    .glow-cyan { box-shadow: 0 0 25px rgba(14, 165, 233, 0.25); }
-    .gradient-text { background: linear-gradient(90deg, #38BDF8, #818CF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    :root {
+      --bg-deep: #060D1A;
+      --bg-navy: #0C1A30;
+      --bg-card: rgba(14, 28, 52, 0.72);
+      --bg-card-hover: rgba(20, 38, 69, 0.88);
+      --border-subtle: rgba(212, 175, 55, 0.16);
+      --border-strong: rgba(212, 175, 55, 0.45);
+      --gold: #D4AF37;
+      --gold-light: #F3D577;
+      --gold-dim: #9A7B1C;
+      --emerald: #10B981;
+      --crimson: #EF4444;
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --radius-lg: 20px;
+      --shadow-gold: 0 12px 40px -10px rgba(212, 175, 55, 0.25);
+      --shadow-card: 0 20px 50px -20px rgba(0, 0, 0, 0.7);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-deep);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .font-display { font-family: 'Syne', sans-serif; letter-spacing: -0.02em; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    #ambient-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.65; }
+
+    .bg-glow-top {
+      position: fixed; top: -220px; left: 50%; transform: translateX(-50%);
+      width: 960px; height: 560px;
+      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.14) 0%, rgba(12, 26, 48, 0.08) 45%, transparent 72%);
+      z-index: 0; pointer-events: none;
+    }
+
+    .page-wrapper { position: relative; z-index: 1; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      background: rgba(6, 13, 26, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-primary); }
+
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: linear-gradient(135deg, #D4AF37 0%, #8E6E14 100%);
+      display: grid; place-items: center; font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 16px; color: #060D1A;
+      box-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
+    }
+
+    .brand-text strong { display: block; font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; line-height: 1.1; }
+    .brand-text span { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold-light); letter-spacing: 0.06em; }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 22px; border-radius: 999px; font-size: 14px; font-weight: 700;
+      text-decoration: none; cursor: pointer; border: 1px solid transparent;
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1); white-space: nowrap; font-family: inherit;
+    }
+
+    .btn-subscribe { background: linear-gradient(135deg, #FF0033 0%, #C80028 100%); color: #FFFFFF; box-shadow: 0 8px 28px -6px rgba(255, 0, 51, 0.55); }
+    .btn-subscribe:hover { transform: translateY(-2px); box-shadow: 0 14px 36px -6px rgba(255, 0, 51, 0.72); }
+
+    .btn-gold { background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-dim) 100%); color: #060D1A; box-shadow: var(--shadow-gold); }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 18px 42px -8px rgba(212, 175, 55, 0.48); }
+
+    .btn-glass { background: rgba(255, 255, 255, 0.05); color: var(--text-primary); border-color: rgba(255, 255, 255, 0.14); backdrop-filter: blur(10px); }
+    .btn-glass:hover { background: rgba(212, 175, 55, 0.12); border-color: var(--border-strong); color: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-danger { background: rgba(239, 68, 68, 0.14); color: #FCA5A5; border-color: rgba(239, 68, 68, 0.35); }
+    .btn-danger:hover { background: rgba(239, 68, 68, 0.28); color: #FFF; }
+    .btn-sm { padding: 9px 16px; font-size: 13px; }
+    .btn-xs { padding: 6px 12px; font-size: 12px; }
+
+    .ticker-wrap { overflow: hidden; background: rgba(12, 26, 48, 0.75); border-bottom: 1px solid rgba(212, 175, 55, 0.14); padding: 10px 0; }
+    .ticker-track { display: flex; width: max-content; gap: 44px; animation: ticker 34s linear infinite; }
+    .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+    .ticker-item { display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.07em; }
+    .ticker-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+    .ticker-item strong { color: var(--gold-light); }
+    .ticker-up { color: var(--emerald); font-weight: 600; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .hero { padding: 84px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
+
+    .eyebrow-pill {
+      display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; border-radius: 999px;
+      background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3);
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold-light); margin-bottom: 22px;
+    }
+
+    .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+
+    .hero h1 { font-size: clamp(2.6rem, 5vw, 4.3rem); font-weight: 800; line-height: 1.04; margin-bottom: 22px; }
+    .text-gold-gradient { background: linear-gradient(135deg, #FFF3C4 0%, #D4AF37 52%, #B5891E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-lead { font-size: 17px; color: var(--text-secondary); max-width: 570px; margin-bottom: 32px; }
+    .hero-cta-group { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 32px; }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+    .stat-box strong { display: block; font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--text-primary); }
+    .stat-box span { font-size: 12px; color: var(--text-secondary); }
+
+    .creator-card {
+      position: relative; background: linear-gradient(160deg, rgba(16, 33, 62, 0.92) 0%, rgba(8, 17, 34, 0.96) 100%);
+      border: 1px solid var(--border-strong); border-radius: 26px; padding: 28px;
+      box-shadow: var(--shadow-card), 0 0 60px -20px rgba(212, 175, 55, 0.22);
+      transition: transform 0.2s ease; transform-style: preserve-3d;
+    }
+
+    .creator-card-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+    .creator-identity { display: flex; align-items: center; gap: 14px; }
+    .avatar-ring { width: 58px; height: 58px; border-radius: 18px; padding: 2px; background: linear-gradient(135deg, var(--gold-light), var(--gold-dim)); }
+    .avatar-inner { width: 100%; height: 100%; border-radius: 16px; background: var(--bg-navy); display: grid; place-items: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; color: var(--gold-light); }
+
+    .handle-badge {
+      display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px;
+      background: rgba(212, 175, 55, 0.12); border: 1px solid rgba(212, 175, 55, 0.35);
+      color: var(--gold-light); font-family: 'JetBrains Mono', monospace; font-size: 12px; cursor: pointer; transition: all 0.2s ease;
+    }
+    .handle-badge:hover { background: rgba(212, 175, 55, 0.22); }
+
+    .quote-banner { background: rgba(6, 13, 26, 0.65); border-left: 3px solid var(--gold); border-radius: 12px; padding: 14px 16px; margin-bottom: 20px; font-size: 14px; color: var(--text-primary); }
+    .quote-banner small { display: block; margin-top: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold-light); }
+
+    .quick-follow-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+    .quick-social-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 22px; }
+    .quick-social-btn {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      padding: 12px 6px; border-radius: 14px; background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-primary); text-decoration: none;
+      font-size: 11px; font-weight: 600; transition: all 0.22s ease;
+    }
+    .quick-social-btn:hover { transform: translateY(-3px); border-color: var(--border-strong); background: rgba(212, 175, 55, 0.12); }
+
+    .spotlight-video {
+      display: flex; align-items: center; gap: 14px; padding: 12px; border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
+      text-decoration: none; color: inherit; transition: all 0.2s ease;
+    }
+    .spotlight-video:hover { border-color: rgba(255, 0, 51, 0.5); background: rgba(255, 0, 51, 0.08); }
+    .spotlight-thumb { width: 96px; height: 58px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+    .spotlight-meta span { display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--emerald); text-transform: uppercase; margin-bottom: 2px; }
+    .spotlight-meta strong { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 13px; line-height: 1.3; }
+
+    section { padding: 76px 0; }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 40px; flex-wrap: wrap; }
+    .section-kicker { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-light); margin-bottom: 10px; }
+    .section-head h2 { font-size: clamp(1.85rem, 3.2vw, 2.75rem); font-weight: 800; line-height: 1.12; }
+    .section-desc { color: var(--text-secondary); max-width: 520px; font-size: 15px; }
+
+    .social-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .social-card {
+      position: relative; display: flex; flex-direction: column; justify-content: space-between;
+      background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-lg);
+      padding: 26px; backdrop-filter: blur(14px); transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1); overflow: hidden;
+    }
+    .social-card::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at top right, var(--accent-glow, rgba(212, 175, 55, 0.14)), transparent 62%);
+      opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+    }
+    .social-card:hover { transform: translateY(-6px); border-color: var(--border-strong); background: var(--bg-card-hover); box-shadow: var(--shadow-card); }
+    .social-card:hover::before { opacity: 1; }
+    .social-card.featured-yt { grid-column: span 2; border-color: rgba(255, 0, 51, 0.32); --accent-glow: rgba(255, 0, 51, 0.18); }
+    .social-card.ig { --accent-glow: rgba(221, 42, 123, 0.2); }
+    .social-card.fb { --accent-glow: rgba(24, 119, 242, 0.2); }
+    .social-card.x { --accent-glow: rgba(248, 250, 252, 0.12); }
+    .social-card.gh { --accent-glow: rgba(139, 92, 246, 0.2); }
+
+    .social-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 18px; }
+    .platform-icon-box { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .status-chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; }
+    .status-verified { background: rgba(16, 185, 129, 0.14); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .status-official { background: rgba(212, 175, 55, 0.12); color: var(--gold-light); border: 1px solid rgba(212, 175, 55, 0.3); }
+    .social-card h3 { font-size: 22px; margin-bottom: 4px; }
+    .social-handle { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--gold-light); margin-bottom: 12px; display: inline-block; }
+    .social-card p { font-size: 14px; color: var(--text-secondary); margin-bottom: 22px; }
+    .yt-metrics-inline { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 22px; }
+    .yt-metric-pill { padding: 8px 14px; border-radius: 12px; background: rgba(6, 13, 26, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); font-size: 12px; color: var(--text-secondary); }
+    .yt-metric-pill strong { color: var(--text-primary); font-family: 'JetBrains Mono', monospace; }
+    .social-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .filter-btn { padding: 9px 18px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.04); color: var(--text-secondary); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+    .filter-btn:hover, .filter-btn.active { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #060D1A; border-color: transparent; }
+
+    .video-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .video-card { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; transition: all 0.26s ease; }
+    .video-card:hover { transform: translateY(-5px); border-color: var(--border-strong); box-shadow: var(--shadow-card); }
+    .video-thumb-wrap { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #091326; cursor: pointer; }
+    .video-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
+    .video-card:hover .video-thumb-wrap img { transform: scale(1.05); }
+    .play-overlay { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(6, 13, 26, 0.28); }
+    .play-circle { width: 52px; height: 52px; border-radius: 50%; background: rgba(255, 0, 51, 0.92); display: grid; place-items: center; color: #fff; box-shadow: 0 8px 24px rgba(255, 0, 51, 0.45); transition: transform 0.2s ease; }
+    .video-card:hover .play-circle { transform: scale(1.1); }
+    .video-duration { position: absolute; bottom: 10px; right: 10px; padding: 3px 8px; border-radius: 6px; background: rgba(6, 13, 26, 0.88); font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #fff; }
+    .video-cat-badge { position: absolute; top: 10px; left: 10px; padding: 4px 10px; border-radius: 999px; background: rgba(6, 13, 26, 0.85); border: 1px solid rgba(212, 175, 55, 0.35); font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold-light); text-transform: uppercase; }
+    .video-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 14px; }
+    .video-body h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; line-height: 1.4; color: var(--text-primary); }
+    .video-meta-row { display: flex; align-items: center; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); }
+    .video-meta-row a { color: var(--gold-light); text-decoration: none; font-weight: 600; }
+    .video-meta-row a:hover { text-decoration: underline; }
+
+    /* Newsletter & Daily Blog Hub */
+    .newsletter-box {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center;
+      background: linear-gradient(135deg, rgba(16, 33, 62, 0.92), rgba(24, 22, 14, 0.88));
+      border: 1px solid var(--border-strong); border-radius: 24px; padding: 32px;
+      margin-bottom: 34px; box-shadow: var(--shadow-card);
+    }
+    .newsletter-form { display: flex; gap: 10px; flex-wrap: wrap; }
+    .input-field, .textarea-field, .select-field {
+      width: 100%; background: rgba(6, 13, 26, 0.78); border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 12px; padding: 12px 15px; color: var(--text-primary); font-family: inherit; font-size: 14px;
+      outline: none; transition: border-color 0.2s ease;
+    }
+    .input-field:focus, .textarea-field:focus, .select-field:focus { border-color: var(--gold); }
+    .newsletter-form .input-field { flex: 1; min-width: 210px; border-radius: 999px; padding: 12px 18px; }
+    .sub-meta-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+    .blog-controls-bar {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
+      margin-bottom: 24px; padding: 16px 20px; border-radius: 18px;
+      background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .blog-search-wrap { flex: 1; min-width: 220px; max-width: 360px; }
+    .blog-studio-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+    .blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .blog-card {
+      background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column;
+      transition: all 0.25s ease;
+    }
+    .blog-card:hover { transform: translateY(-5px); border-color: var(--border-strong); box-shadow: var(--shadow-card); }
+    .blog-cover {
+      height: 170px; background: linear-gradient(135deg, #102446 0%, #1F1A0E 100%);
+      position: relative; overflow: hidden; cursor: pointer;
+    }
+    .blog-cover img { width: 100%; height: 100%; object-fit: cover; }
+    .blog-cover-placeholder {
+      width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; color: var(--gold-light); font-size: 20px; font-weight: 800; gap: 4px;
+    }
+    .blog-status-pill {
+      position: absolute; top: 10px; right: 10px; padding: 4px 10px; border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; text-transform: uppercase;
+    }
+    .pill-published { background: rgba(16, 185, 129, 0.9); color: #04130D; }
+    .pill-draft { background: rgba(245, 158, 11, 0.92); color: #1F1302; }
+
+    .blog-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 14px; }
+    .blog-card-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold-light); display: flex; justify-content: space-between; gap: 8px; }
+    .blog-card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 700; line-height: 1.35; cursor: pointer; }
+    .blog-card h3:hover { color: var(--gold-light); }
+    .blog-card p { font-size: 13.5px; color: var(--text-secondary); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .blog-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .blog-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 3px 8px; border-radius: 999px; background: rgba(255, 255, 255, 0.06); color: var(--text-secondary); }
+    .blog-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.07); }
+
+    .editor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-field label { font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--gold-light); text-transform: uppercase; letter-spacing: 0.05em; }
+    .format-toolbar {
+      display: flex; flex-wrap: wrap; gap: 6px; padding: 8px; border-radius: 12px 12px 0 0;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.14); border-bottom: none;
+    }
+    .fmt-btn {
+      padding: 5px 10px; border-radius: 7px; border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(6, 13, 26, 0.7); color: var(--text-primary); font-size: 12px; font-weight: 600; cursor: pointer;
+    }
+    .fmt-btn:hover { border-color: var(--gold); color: var(--gold-light); }
+    .textarea-field.has-toolbar { border-radius: 0 0 12px 12px; min-height: 210px; resize: vertical; line-height: 1.65; }
+    .upload-dropzone {
+      border: 1.5px dashed rgba(212, 175, 55, 0.45); border-radius: 14px; padding: 18px;
+      text-align: center; background: rgba(212, 175, 55, 0.05); cursor: pointer; margin-bottom: 16px; transition: all 0.2s ease;
+    }
+    .upload-dropzone:hover { background: rgba(212, 175, 55, 0.11); border-color: var(--gold-light); }
+
+    .article-prose { padding: 26px; max-height: 70vh; overflow-y: auto; font-size: 15.5px; color: #E2E8F0; line-height: 1.8; }
+    .article-prose h2, .article-prose h3 { margin: 22px 0 10px; color: var(--gold-light); }
+    .article-prose p { margin-bottom: 14px; }
+    .article-prose ul { margin: 10px 0 16px 22px; }
+    .article-prose blockquote { border-left: 3px solid var(--gold); padding: 10px 16px; margin: 16px 0; background: rgba(212, 175, 55, 0.08); border-radius: 8px; font-style: italic; }
+    .article-prose pre { background: #050B16; border: 1px solid rgba(255, 255, 255, 0.1); padding: 14px; border-radius: 10px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 13px; margin: 14px 0; }
+    .article-prose a { color: var(--gold-light); }
+
+    .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
+    .panel-card { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-lg); padding: 30px; backdrop-filter: blur(14px); }
+    .checklist-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+    .check-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; border-radius: 14px; background: rgba(6, 13, 26, 0.55); border: 1px solid rgba(255, 255, 255, 0.07); cursor: pointer; transition: all 0.2s ease; }
+    .check-item:hover { border-color: var(--border-strong); }
+    .check-item.checked { border-color: rgba(16, 185, 129, 0.45); background: rgba(16, 185, 129, 0.08); }
+    .check-box { width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--gold); display: grid; place-items: center; flex-shrink: 0; margin-top: 2px; font-size: 12px; color: #060D1A; transition: all 0.2s ease; }
+    .check-item.checked .check-box { background: var(--emerald); border-color: var(--emerald); color: #060D1A; }
+    .check-item strong { display: block; font-size: 14px; margin-bottom: 2px; }
+    .check-item span { font-size: 13px; color: var(--text-secondary); }
+
+    .calc-group { margin-top: 18px; }
+    .calc-label-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; color: var(--text-secondary); }
+    .calc-label-row strong { font-family: 'JetBrains Mono', monospace; color: var(--gold-light); }
+    input[type="range"] { width: 100%; accent-color: var(--gold); cursor: pointer; }
+    .calc-results { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px; }
+    .calc-res-box { padding: 16px; border-radius: 14px; background: rgba(6, 13, 26, 0.72); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .calc-res-box span { display: block; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; }
+    .calc-res-box strong { font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--emerald); }
+    .calc-res-box strong.negative { color: var(--crimson); }
+    .calc-res-box strong.gold { color: var(--gold-light); }
+
+    .audit-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; }
+    .bar-list { display: flex; flex-direction: column; gap: 18px; margin-top: 22px; }
+    .bar-row-top { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 7px; }
+    .bar-row-top strong { color: var(--text-primary); }
+    .bar-row-top span { font-family: 'JetBrains Mono', monospace; color: var(--gold-light); }
+    .bar-track { height: 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.07); overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--gold-dim), var(--gold-light)); }
+    .audit-table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 13px; }
+    .audit-table th, .audit-table td { text-align: left; padding: 12px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
+    .audit-table th { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--text-muted); }
+
+    .cta-banner {
+      position: relative; border-radius: 28px; padding: 56px 40px;
+      background: linear-gradient(135deg, rgba(16, 33, 62, 0.95) 0%, rgba(12, 26, 48, 0.98) 50%, rgba(36, 28, 12, 0.92) 100%);
+      border: 1px solid var(--border-strong); text-align: center; overflow: hidden; box-shadow: var(--shadow-card);
+    }
+    .cta-banner h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); margin-bottom: 14px; }
+    .cta-banner p { color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px; font-size: 16px; }
+    .cta-banner-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .collab-bar {
+      margin-top: 26px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px;
+      font-size: 14px; color: var(--text-secondary);
+    }
+
+    footer { padding: 44px 0 56px; border-top: 1px solid rgba(255, 255, 255, 0.07); margin-top: 48px; }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; font-size: 13px; color: var(--text-secondary); }
+    .footer-link-btn { background: none; border: none; color: var(--gold-light); font: inherit; cursor: pointer; text-decoration: underline; }
+    .footer-disclaimer { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 12px; color: var(--text-muted); }
+
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(3, 7, 16, 0.86); backdrop-filter: blur(10px); z-index: 100; display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal-backdrop.open { display: flex; }
+    .modal-box { width: 100%; max-width: 860px; max-height: 92vh; overflow-y: auto; background: var(--bg-navy); border: 1px solid var(--border-strong); border-radius: 22px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8); }
+    .modal-head { position: sticky; top: 0; z-index: 2; background: var(--bg-navy); display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .modal-body-pad { padding: 24px; }
+    .modal-close { background: rgba(255, 255, 255, 0.08); border: none; color: #fff; width: 34px; height: 34px; border-radius: 50%; font-size: 18px; cursor: pointer; }
+    .modal-frame-wrap { position: relative; aspect-ratio: 16 / 9; background: #000; }
+    .modal-frame-wrap iframe { width: 100%; height: 100%; border: 0; }
+
+    .toast { position: fixed; bottom: 24px; right: 24px; z-index: 120; padding: 12px 20px; border-radius: 12px; background: var(--bg-navy); border: 1px solid var(--gold); color: var(--gold-light); font-family: 'JetBrains Mono', monospace; font-size: 13px; box-shadow: var(--shadow-gold); opacity: 0; transform: translateY(16px); pointer-events: none; transition: all 0.25s ease; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .hero-grid, .split-grid, .audit-grid, .newsletter-box, .editor-grid { grid-template-columns: 1fr; }
+      .social-grid, .video-grid, .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .social-card.featured-yt { grid-column: span 2; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 640px) {
+      .social-grid, .video-grid, .blog-grid { grid-template-columns: 1fr; }
+      .social-card.featured-yt { grid-column: span 1; }
+      .hero { padding: 52px 0 48px; }
+      .cta-banner { padding: 38px 22px; }
+      .quick-social-row { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+    }
   </style>
 </head>
-<body class="antialiased selection:bg-sky-500 selection:text-white">
+<body>
+  <canvas id="ambient-canvas"></canvas>
+  <div class="bg-glow-top"></div>
 
-  <!-- Navbar -->
-  <nav class="fixed top-0 w-full z-50 glass border-b border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-sky-400 to-blue-700 flex items-center justify-center font-extrabold text-sm tracking-tighter text-white shadow-lg">
-          DTB
-        </div>
-        <span class="font-bold text-lg tracking-tight">DT Bytes</span>
-      </a>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#videos" class="hover:text-sky-400 transition">Videos</a>
-        <a href="#series" class="hover:text-sky-400 transition">100 Days Trading</a>
-        <a href="#resources" class="hover:text-sky-400 transition">Guides & Tools</a>
-      </div>
-      <a href="https://www.youtube.com/@dtbytes?sub_confirmation=1" target="_blank"
-         class="bg-red-600 hover:bg-red-500 text-white text-sm font-semibold px-4 py-2 rounded-full transition flex items-center gap-2 shadow-md">
-        <span>Subscribe</span>
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-      </a>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="relative pt-32 pb-20 px-4 sm:px-6 overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/30 via-slate-950 to-slate-950 -z-10"></div>
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-semibold text-sky-400 mb-6">
-        <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
-        TECH • TRADING • INSIGHTS
-      </div>
-      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight mb-6">
-        Smart Tech Reviews & <br class="hidden sm:block" />
-        <span class="gradient-text">Disciplined Trading</span> Insights
-      </h1>
-      <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-        Honest gadget unboxings, real-world tech troubleshooting, and risk-first trading psychology—cut straight to the point without the fluff.
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#videos" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold transition glow-cyan">
-          Explore Latest Videos
+  <div class="page-wrapper">
+    <header>
+      <div class="container nav-inner">
+        <a href="#top" class="brand">
+          <div class="brand-mark">DT</div>
+          <div class="brand-text">
+            <strong>DT Bytes</strong>
+            <span>@dtbytes</span>
+          </div>
         </a>
-        <a href="https://www.youtube.com/@dtbytes" target="_blank" class="w-full sm:w-auto px-7 py-3.5 rounded-xl glass hover:border-sky-400/50 font-semibold transition">
-          Visit @dtbytes on YouTube
-        </a>
+        <ul class="nav-links">
+          <li><a href="#platforms">Platforms</a></li>
+          <li><a href="#newsletter-blog">Newsletter &amp; Blog</a></li>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#framework">Trading Lab</a></li>
+          <li><a href="#analysis">Brand Audit</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn btn-glass btn-sm" id="copyHandleNav" type="button" title="Copy @dtbytes handle">@dtbytes</button>
+          <a class="btn btn-subscribe btn-sm" href="https://www.youtube.com/@dtbytes?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+            Subscribe
+          </a>
+        </div>
       </div>
+    </header>
 
-      <!-- Channel Stats Bar -->
-      <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mt-14 pt-8 border-t border-slate-800/80">
+    <div class="ticker-wrap" aria-label="DT Bytes Highlights">
+      <div class="ticker-track">
+        <span class="ticker-item"><span class="ticker-dot"></span><strong>BE TECHY, BE TRADING</strong> — Official Hub of @dtbytes</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>DAILY BLOG &amp; NEWSLETTER STUDIO LIVE</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>TOP VIDEO: CASIO F-91W UNBOXING <span class="ticker-up">7,302+ VIEWS</span></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>CRYPTO TROUBLESHOOTING: COINDCX USDT FIX <span class="ticker-up">5,895+ VIEWS</span></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>100 DAYS TRADING JOURNEY — #DISCIPLINEDTRADER</span>
+        <span class="ticker-item"><span class="ticker-dot"></span><strong>BE TECHY, BE TRADING</strong> — Official Hub of @dtbytes</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>DAILY BLOG &amp; NEWSLETTER STUDIO LIVE</span>
+        <span class="ticker-item"><span class="ticker-dot"></span>TOP VIDEO: CASIO F-91W UNBOXING <span class="ticker-up">7,302+ VIEWS</span></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>CRYPTO TROUBLESHOOTING: COINDCX USDT FIX <span class="ticker-up">5,895+ VIEWS</span></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>100 DAYS TRADING JOURNEY — #DISCIPLINEDTRADER</span>
+      </div>
+    </div>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow-pill"><span class="pulse-dot"></span> Official Creator Ecosystem • @dtbytes</div>
+            <h1>Be Techy.<br /><span class="text-gold-gradient">Be Trading.</span></h1>
+            <p class="hero-lead">
+              Welcome to <strong>DT Bytes</strong> by <strong>Debasish Mondal (Mr. D)</strong> — practical tech troubleshooting, honest gadget reviews, scam alerts, daily blogs, and disciplined crypto &amp; risk-management education.
+            </p>
+            <div class="hero-cta-group">
+              <a class="btn btn-subscribe" href="https://www.youtube.com/@dtbytes?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+                Subscribe on YouTube
+              </a>
+              <a class="btn btn-gold" href="#newsletter-blog">Read Daily Blog &amp; Newsletter</a>
+              <a class="btn btn-glass" href="mailto:dtbytes@outlook.com?subject=Business%20%26%20Collaboration%20Inquiry%20-%20DT%20Bytes">Business &amp; Collabs</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-box"><strong>5 Platforms</strong><span>Unified @dtbytes Hub</span></div>
+              <div class="stat-box"><strong>13.9K+</strong><span>Verified Featured Views</span></div>
+              <div class="stat-box"><strong id="heroBlogCount">3 Posts</strong><span>Daily Blog &amp; Briefings</span></div>
+            </div>
+          </div>
+
+          <div class="creator-card" id="tiltCard">
+            <div class="creator-card-header">
+              <div class="creator-identity">
+                <div class="avatar-ring"><div class="avatar-inner">DT</div></div>
+                <div>
+                  <h3 style="font-size: 20px; line-height: 1.1;">DT Bytes</h3>
+                  <span style="font-size: 13px; color: var(--text-secondary);">Debasish Mondal • Mr. D</span>
+                </div>
+              </div>
+              <button class="handle-badge" id="copyHandleCard" type="button" title="Copy handle">@dtbytes ⧉</button>
+            </div>
+            <div class="quote-banner">
+              “Traders manage risk. Gamblers chase prediction. We build skill, not fantasy.”
+              <small>— DT Bytes • 100 Days Trading Journey</small>
+            </div>
+            <div class="quick-follow-label">Direct 1-Click Follow</div>
+            <div class="quick-social-row">
+              <a class="quick-social-btn" href="https://www.youtube.com/@dtbytes?sub_confirmation=1" target="_blank" rel="noopener noreferrer">YouTube</a>
+              <a class="quick-social-btn" href="https://www.instagram.com/dtbytes/" target="_blank" rel="noopener noreferrer">IG</a>
+              <a class="quick-social-btn" href="https://www.facebook.com/dtbytes" target="_blank" rel="noopener noreferrer">FB</a>
+              <a class="quick-social-btn" href="https://x.com/dtbytes" target="_blank" rel="noopener noreferrer">X</a>
+              <a class="quick-social-btn" href="https://github.com/dtbytes" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+            <a class="spotlight-video" href="https://www.youtube.com/watch?v=0FtnDExMAso" target="_blank" rel="noopener noreferrer">
+              <img class="spotlight-thumb" src="https://i.ytimg.com/vi/0FtnDExMAso/hqdefault.jpg" alt="CoinDCX Crypto Deposit Not Showing Solved" />
+              <div class="spotlight-meta">
+                <span>Most Helpful Crypto Fix • 5,895 Views</span>
+                <strong>CoinDCX Crypto Deposit Not Showing! Solved | USDT Error Fixed</strong>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 01 / Social Ecosystem -->
+      <section id="platforms" class="reveal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">01 / Direct Connect Hub</div>
+              <h2>Follow <span class="text-gold-gradient">@dtbytes</span> Everywhere</h2>
+            </div>
+            <p class="section-desc">Every official DT Bytes channel in one place. Hit Subscribe on YouTube and follow across Instagram, Facebook, X, and GitHub.</p>
+          </div>
+          <div class="social-grid">
+            <article class="social-card featured-yt">
+              <div>
+                <div class="social-top">
+                  <div class="platform-icon-box" style="background: rgba(255, 0, 51, 0.14); border-color: rgba(255, 0, 51, 0.35);">▶</div>
+                  <span class="status-chip status-verified">● Verified Active Flagship</span>
+                </div>
+                <h3>YouTube — DT Bytes</h3>
+                <span class="social-handle">youtube.com/@dtbytes</span>
+                <p>Long-form tech troubleshooting, honest gadget unboxings, crypto deposit &amp; exchange fixes, scam exposures, and the 100 Days Trading Learning Journey.</p>
+                <div class="yt-metrics-inline">
+                  <div class="yt-metric-pill">Top Video: <strong>7,302 views</strong></div>
+                  <div class="yt-metric-pill">Crypto Fix: <strong>5,895 views</strong></div>
+                  <div class="yt-metric-pill">Format: <strong>Hinglish &amp; English</strong></div>
+                </div>
+              </div>
+              <div class="social-footer">
+                <a class="btn btn-subscribe" href="https://www.youtube.com/@dtbytes?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Subscribe Now</a>
+                <a class="btn btn-glass btn-sm" href="https://www.youtube.com/channel/UCRGEOP2OSHYm2ld6l2Hy4lg" target="_blank" rel="noopener noreferrer">Visit Channel →</a>
+              </div>
+            </article>
+            <article class="social-card ig">
+              <div>
+                <div class="social-top"><div class="platform-icon-box" style="background: rgba(221, 42, 123, 0.14); border-color: rgba(221, 42, 123, 0.35);">IG</div><span class="status-chip status-official">Reels &amp; Daily Clips</span></div>
+                <h3>Instagram</h3><span class="social-handle">@dtbytes</span>
+                <p>Fast-paced tech tips, 100-Day trading mindset reels, gadget snapshots, and studio updates.</p>
+              </div>
+              <div class="social-footer"><a class="btn btn-gold btn-sm" href="https://www.instagram.com/dtbytes/" target="_blank" rel="noopener noreferrer">Follow on Instagram →</a></div>
+            </article>
+            <article class="social-card fb">
+              <div>
+                <div class="social-top"><div class="platform-icon-box" style="background: rgba(24, 119, 242, 0.14); border-color: rgba(24, 119, 242, 0.35);">f</div><span class="status-chip status-official">Community &amp; Reels</span></div>
+                <h3>Facebook</h3><span class="social-handle">facebook.com/dtbytes</span>
+                <p>Community discussions, Hinglish scam alerts, full-video teasers, and direct Q&amp;A.</p>
+              </div>
+              <div class="social-footer"><a class="btn btn-glass btn-sm" href="https://www.facebook.com/dtbytes" target="_blank" rel="noopener noreferrer">Follow on Facebook →</a></div>
+            </article>
+            <article class="social-card x">
+              <div>
+                <div class="social-top"><div class="platform-icon-box" style="background: rgba(248, 250, 252, 0.08); border-color: rgba(248, 250, 252, 0.2);">𝕏</div><span class="status-chip status-official">Real-Time Threads</span></div>
+                <h3>X (Twitter)</h3><span class="social-handle">x.com/dtbytes</span>
+                <p>Sharp risk-management reminders, India crypto updates, quick tech fixes, and trading notes.</p>
+              </div>
+              <div class="social-footer"><a class="btn btn-glass btn-sm" href="https://x.com/dtbytes" target="_blank" rel="noopener noreferrer">Follow on X →</a></div>
+            </article>
+            <article class="social-card gh">
+              <div>
+                <div class="social-top"><div class="platform-icon-box" style="background: rgba(139, 92, 246, 0.14); border-color: rgba(139, 92, 246, 0.35);">GH</div><span class="status-chip status-official">Code &amp; Open Source</span></div>
+                <h3>GitHub</h3><span class="social-handle">github.com/dtbytes</span>
+                <p>Open-source utilities, automation scripts, trading calculators, and web builds by DT Bytes.</p>
+              </div>
+              <div class="social-footer"><a class="btn btn-glass btn-sm" href="https://github.com/dtbytes" target="_blank" rel="noopener noreferrer">Follow on GitHub →</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 / Daily Newsletter & Full-Featured Blog Studio -->
+      <section id="newsletter-blog" class="reveal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">02 / Daily Dispatch &amp; Publishing Studio</div>
+              <h2>DT Bytes <span class="text-gold-gradient">Newsletter &amp; Daily Blog</span></h2>
+            </div>
+            <p class="section-desc">Read daily tech &amp; trading notes, subscribe to the newsletter, or open the built-in Studio to write or bulk-upload one or many blog posts every day.</p>
+          </div>
+
+          <div class="newsletter-box">
+            <div>
+              <span class="status-chip status-verified" style="margin-bottom: 12px;">✉ Free Daily Tech &amp; Trading Brief</span>
+              <h3 style="font-size: 26px; margin-bottom: 8px;">Get Every New DT Bytes Post in Your Inbox</h3>
+              <p style="font-size: 14px; color: var(--text-secondary);">Practical fixes, FIU crypto updates, scam alerts, and risk-management lessons — zero spam, pure signal.</p>
+            </div>
+            <div>
+              <form class="newsletter-form" id="newsletterForm">
+                <input type="email" class="input-field" id="subEmail" placeholder="Enter your email address..." required />
+                <button type="submit" class="btn btn-gold">Join Newsletter</button>
+              </form>
+              <div class="sub-meta-row">
+                <span id="subCountLabel">0 local subscribers saved</span>
+                <button type="button" class="btn btn-glass btn-xs" id="exportSubsBtn">Export Subscribers CSV</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="blog-controls-bar">
+            <div class="blog-search-wrap">
+              <input type="search" class="input-field" id="blogSearch" placeholder="Search blogs by title, tag, or topic..." />
+            </div>
+            <div class="blog-studio-actions">
+              <button type="button" class="btn btn-gold btn-sm" id="openComposerBtn">+ Write / Upload Blog</button>
+              <label class="btn btn-glass btn-sm" style="cursor:pointer;">
+                ↑ Quick Multi-Upload (.md/.txt/.html)
+                <input type="file" id="quickUploadInput" accept=".md,.txt,.html,.htm" multiple hidden />
+              </label>
+              <button type="button" class="btn btn-glass btn-sm" id="exportBlogsBtn">Export JSON</button>
+              <label class="btn btn-glass btn-sm" style="cursor:pointer;">
+                Import JSON
+                <input type="file" id="importBlogsInput" accept=".json" hidden />
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-bar" id="blogFilterBar">
+            <button class="filter-btn active" data-bcat="all" type="button">All Published</button>
+            <button class="filter-btn" data-bcat="Tech & Gadgets" type="button">Tech &amp; Gadgets</button>
+            <button class="filter-btn" data-bcat="Crypto & Trading" type="button">Crypto &amp; Trading</button>
+            <button class="filter-btn" data-bcat="Scam Alerts" type="button">Scam Alerts</button>
+            <button class="filter-btn" data-bcat="Daily Notes" type="button">Daily Notes</button>
+            <button class="filter-btn" data-bcat="drafts" type="button">Drafts Only</button>
+          </div>
+
+          <div class="blog-grid" id="blogGrid"></div>
+        </div>
+      </section>
+
+      <!-- 03 / Verified YouTube Library -->
+      <section id="videos" class="reveal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">03 / Verified YouTube Library</div>
+              <h2>Featured <span class="text-gold-gradient">DT Bytes</span> Videos</h2>
+            </div>
+            <p class="section-desc">Real videos from the DT Bytes YouTube channel. Filter by topic or click any thumbnail to preview right here.</p>
+          </div>
+          <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all" type="button">All Videos (9)</button>
+            <button class="filter-btn" data-filter="tech" type="button">Tech &amp; Gadgets</button>
+            <button class="filter-btn" data-filter="crypto" type="button">Crypto &amp; Apps</button>
+            <button class="filter-btn" data-filter="trading" type="button">100 Days Trading</button>
+            <button class="filter-btn" data-filter="scam" type="button">Scam Alerts</button>
+          </div>
+          <div class="video-grid" id="videoGrid"></div>
+        </div>
+      </section>
+
+      <!-- 04 / Interactive Trader Lab -->
+      <section id="framework" class="reveal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">04 / Interactive Trader Lab</div>
+              <h2>Disciplined Trading <span class="text-gold-gradient">Toolkit</span></h2>
+            </div>
+            <p class="section-desc">Built from DT Bytes’s 5-Point Survival Checklist and Day 1 Probability &amp; Risk Management lesson.</p>
+          </div>
+          <div class="split-grid">
+            <div class="panel-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+                <h3 style="font-size:22px;">DT Bytes 5-Point Survival Checklist</h3>
+                <span class="font-mono" id="checkProgress" style="font-size:12px; color:var(--gold-light);">0 / 5 Ready</span>
+              </div>
+              <div class="checklist-list">
+                <div class="check-item"><div class="check-box"></div><div><strong>1. Keep Leverage Ultra-Low (1x–3x)</strong><span>Avoid forced liquidation during normal volatility and stop-loss sweeps.</span></div></div>
+                <div class="check-item"><div class="check-box"></div><div><strong>2. Use Limit Orders for Entries</strong><span>Capture lower maker fees (~0.02%) instead of market taker fees (~0.05%).</span></div></div>
+                <div class="check-item"><div class="check-box"></div><div><strong>3. Top-Down Timeframe Alignment</strong><span>Map primary trend and key support/resistance before 1m/5m entries.</span></div></div>
+                <div class="check-item"><div class="check-box"></div><div><strong>4. Enforce a 30–120 Min Time Barrier</strong><span>Exit stagnant trades within your planned window — avoid emotional holds.</span></div></div>
+                <div class="check-item"><div class="check-box"></div><div><strong>5. Respect Daily Stop-Loss Limits</strong><span>Close the terminal after hitting your daily max loss to stop revenge trading.</span></div></div>
+              </div>
+            </div>
+            <div class="panel-card">
+              <h3 style="font-size:22px;">Probability &amp; Risk Simulator</h3>
+              <p style="font-size:14px; color:var(--text-secondary); margin-top:6px;">See how disciplined risk-to-reward math beats prediction over a series of trades.</p>
+              <div class="calc-group"><div class="calc-label-row"><span>Risk Per Trade (₹)</span><strong id="valRisk">₹500</strong></div><input type="range" id="inputRisk" min="100" max="5000" step="100" value="500" /></div>
+              <div class="calc-group"><div class="calc-label-row"><span>Win Rate (%)</span><strong id="valWinRate">55%</strong></div><input type="range" id="inputWinRate" min="25" max="80" step="5" value="55" /></div>
+              <div class="calc-group"><div class="calc-label-row"><span>Reward-to-Risk Ratio (1 : R)</span><strong id="valRR">1 : 2.0</strong></div><input type="range" id="inputRR" min="1" max="4" step="0.5" value="2" /></div>
+              <div class="calc-group"><div class="calc-label-row"><span>Sample Size (Trades)</span><strong id="valTrades">20 trades</strong></div><input type="range" id="inputTrades" min="10" max="100" step="10" value="20" /></div>
+              <div class="calc-results">
+                <div class="calc-res-box"><span>Expected Net P&amp;L</span><strong id="resNet">+₹6,500</strong></div>
+                <div class="calc-res-box"><span>Expectancy / Trade</span><strong class="gold" id="resExp">+0.65R</strong></div>
+                <div class="calc-res-box"><span>Wins / Losses</span><strong class="gold" id="resWL">11W / 9L</strong></div>
+                <div class="calc-res-box"><span>Total Capital Risked</span><strong style="color: var(--text-primary);" id="resTotalRisk">₹10,000</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 / Brand Audit -->
+      <section id="analysis" class="reveal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">05 / Deep Brand &amp; Channel Analysis</div>
+              <h2>@dtbytes <span class="text-gold-gradient">Performance &amp; Audit</span></h2>
+            </div>
+            <p class="section-desc">Audit of DT Bytes’s verified YouTube content pillars and cross-platform discoverability across all 5 channels.</p>
+          </div>
+          <div class="audit-grid">
+            <div class="panel-card">
+              <h3 style="font-size:20px;">YouTube Content Pillar Traction</h3>
+              <div class="bar-list">
+                <div><div class="bar-row-top"><strong>Gadget Reviews &amp; Tech Fixes</strong><span>7,331 views (52.4%)</span></div><div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div></div>
+                <div><div class="bar-row-top"><strong>Crypto &amp; Trading App Fixes</strong><span>6,385 views (45.6%)</span></div><div class="bar-track"><div class="bar-fill" style="width: 87%;"></div></div></div>
+                <div><div class="bar-row-top"><strong>100 Days Trading Series</strong><span>226 views (1.6%)</span></div><div class="bar-track"><div class="bar-fill" style="width: 12%;"></div></div></div>
+                <div><div class="bar-row-top"><strong>Scam Awareness &amp; Alerts</strong><span>53 views (0.4%)</span></div><div class="bar-track"><div class="bar-fill" style="width: 6%;"></div></div></div>
+              </div>
+            </div>
+            <div class="panel-card">
+              <h3 style="font-size:20px;">Cross-Platform SEO Matrix</h3>
+              <table class="audit-table">
+                <thead><tr><th>Platform</th><th>Handle</th><th>Public Search Status</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>YouTube</strong></td><td class="font-mono">@dtbytes</td><td style="color: var(--emerald); font-weight: 600;">Indexed &amp; Active</td></tr>
+                  <tr><td><strong>Instagram</strong></td><td class="font-mono">@dtbytes</td><td style="color: var(--gold-light);">Needs Cross-Link SEO</td></tr>
+                  <tr><td><strong>Facebook</strong></td><td class="font-mono">@dtbytes</td><td style="color: var(--gold-light);">Needs Cross-Link SEO</td></tr>
+                  <tr><td><strong>X (Twitter)</strong></td><td class="font-mono">@dtbytes</td><td style="color: var(--gold-light);">Needs Cross-Link SEO</td></tr>
+                  <tr><td><strong>GitHub</strong></td><td class="font-mono">@dtbytes</td><td style="color: var(--gold-light);">Needs Public README</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="reveal" style="padding-top: 24px;">
+        <div class="container">
+          <div class="cta-banner">
+            <div class="eyebrow-pill" style="margin-bottom: 16px;"><span class="pulse-dot"></span> Join the Community</div>
+            <h2>Ready to Level Up Your Tech &amp; Trading?</h2>
+            <p>Subscribe to <strong>DT Bytes</strong> on YouTube for step-by-step problem-solving guides and follow <strong>@dtbytes</strong> everywhere.</p>
+            <div class="cta-banner-actions">
+              <a class="btn btn-subscribe" href="https://www.youtube.com/@dtbytes?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Subscribe on YouTube</a>
+              <a class="btn btn-gold" href="https://www.instagram.com/dtbytes/" target="_blank" rel="noopener noreferrer">Follow Instagram</a>
+              <a class="btn btn-glass" href="https://www.facebook.com/dtbytes" target="_blank" rel="noopener noreferrer">Follow Facebook</a>
+              <a class="btn btn-glass" href="https://x.com/dtbytes" target="_blank" rel="noopener noreferrer">Follow X</a>
+              <a class="btn btn-glass" href="https://github.com/dtbytes" target="_blank" rel="noopener noreferrer">Follow GitHub</a>
+            </div>
+            <div class="collab-bar">
+              <span>Sponsorships, product reviews &amp; business inquiries:</span>
+              <a class="btn btn-gold btn-sm" href="mailto:dtbytes@outlook.com?subject=Business%20%26%20Collaboration%20Inquiry%20-%20DT%20Bytes">✉ Business &amp; Collaborations — dtbytes@outlook.com</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div class="brand"><div class="brand-mark">DT</div><div class="brand-text"><strong>DT Bytes</strong><span>Be Techy, Be Trading • @dtbytes</span></div></div>
+          <div class="footer-links">
+            <span>Debasish Mondal (Mr. D)</span>
+            <span>•</span>
+            <a href="mailto:dtbytes@outlook.com" style="color: var(--gold-light); text-decoration: none;">dtbytes@outlook.com</a>
+            <span>•</span>
+            <button type="button" class="footer-link-btn" id="openPrivacyBtn">Privacy Policy</button>
+            <button type="button" class="footer-link-btn" id="openTermsBtn">Terms &amp; Disclaimer</button>
+          </div>
+        </div>
+        <div class="footer-disclaimer">Educational Disclaimer: Content shared on DT Bytes (@dtbytes) regarding crypto exchanges, futures, and trading risk management is strictly for educational purposes and is not financial advice.</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Video Preview Modal -->
+  <div class="modal-backdrop" id="videoModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-head"><strong id="modalTitle" style="font-size: 15px;">Video Preview</strong><button class="modal-close" id="closeModal" type="button">&times;</button></div>
+      <div class="modal-frame-wrap"><iframe id="modalIframe" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    </div>
+  </div>
+
+  <!-- Blog Composer & Uploader Modal -->
+  <div class="modal-backdrop" id="composerModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-head">
+        <strong id="composerHeading" style="font-size: 16px;">DT Bytes Blog Studio — Write or Upload</strong>
+        <button class="modal-close" id="closeComposer" type="button">&times;</button>
+      </div>
+      <div class="modal-body-pad">
+        <label class="upload-dropzone" style="display:block;">
+          <strong style="color:var(--gold-light);">Drop or Click to Upload Blog File(s) (.md, .txt, .html)</strong>
+          <div style="font-size:12px; color:var(--text-secondary); margin-top:4px;">Select 1 file to load into editor, or multiple files to bulk-publish immediately.</div>
+          <input type="file" id="modalFileUpload" accept=".md,.txt,.html,.htm" multiple hidden />
+        </label>
+
+        <form id="blogForm">
+          <input type="hidden" id="editBlogId" />
+          <div class="form-field">
+            <label for="blogTitle">Blog Title</label>
+            <input type="text" id="blogTitle" class="input-field" placeholder="e.g., Day 2 of 100 Days Trading: Why Position Sizing Beats Entries" required />
+          </div>
+          <div class="editor-grid">
+            <div class="form-field">
+              <label for="blogCategory">Category</label>
+              <select id="blogCategory" class="select-field">
+                <option value="Crypto & Trading">Crypto &amp; Trading</option>
+                <option value="Tech & Gadgets">Tech &amp; Gadgets</option>
+                <option value="Scam Alerts">Scam Alerts</option>
+                <option value="Daily Notes">Daily Notes</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="blogTags">Tags (comma separated)</label>
+              <input type="text" id="blogTags" class="input-field" placeholder="crypto, risk, india, tech" />
+            </div>
+          </div>
+          <div class="editor-grid">
+            <div class="form-field">
+              <label for="blogCoverUrl">Cover Image URL (optional)</label>
+              <input type="url" id="blogCoverUrl" class="input-field" placeholder="https://..." />
+            </div>
+            <div class="form-field">
+              <label for="blogCoverFile">Or Upload Cover Image</label>
+              <input type="file" id="blogCoverFile" class="input-field" accept="image/*" style="padding: 9px 12px;" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="blogExcerpt">Short Summary / Newsletter Preview</label>
+            <input type="text" id="blogExcerpt" class="input-field" placeholder="One-line hook that appears on the blog card..." />
+          </div>
+          <div class="form-field">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <label for="blogBody">Article Content (Markdown supported)</label>
+              <span class="font-mono" id="wordCountBadge" style="font-size:11px; color:var(--text-muted);">0 words • 1 min read</span>
+            </div>
+            <div class="format-toolbar">
+              <button type="button" class="fmt-btn" data-md="**bold text**">Bold</button>
+              <button type="button" class="fmt-btn" data-md="*italic text*">Italic</button>
+              <button type="button" class="fmt-btn" data-md="\n## Section Heading\n">H2</button>
+              <button type="button" class="fmt-btn" data-md="\n- Bullet point\n">List</button>
+              <button type="button" class="fmt-btn" data-md="\n> Key takeaway quote\n">Quote</button>
+              <button type="button" class="fmt-btn" data-md="\n```\ncode or formula\n```\n">Code</button>
+            </div>
+            <textarea id="blogBody" class="textarea-field has-toolbar" placeholder="Write your daily blog post here..." required></textarea>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; margin-top:18px;">
+            <button type="button" class="btn btn-glass btn-sm" id="saveDraftBtn">Save as Draft</button>
+            <div style="display:flex; gap:10px;">
+              <button type="button" class="btn btn-glass btn-sm" id="cancelComposerBtn">Cancel</button>
+              <button type="submit" class="btn btn-gold btn-sm">Publish Post</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full Article Reader Modal -->
+  <div class="modal-backdrop" id="readerModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-head">
         <div>
-          <div class="text-2xl font-extrabold text-white">20+</div>
-          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Videos & Shorts</div>
+          <strong id="readerTitle" style="font-size: 16px;">Article</strong>
+          <div id="readerMeta" class="font-mono" style="font-size: 11px; color: var(--gold-light); margin-top: 2px;"></div>
         </div>
-        <div>
-          <div class="text-2xl font-extrabold text-sky-400">15K+</div>
-          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Total Views</div>
+        <button class="modal-close" id="closeReader" type="button">&times;</button>
+      </div>
+      <div id="readerCoverWrap"></div>
+      <div class="article-prose" id="readerContent"></div>
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; padding:16px 24px; border-top:1px solid rgba(255,255,255,0.08);">
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn btn-glass btn-xs" id="readerEditBtn">Edit Post</button>
+          <button type="button" class="btn btn-danger btn-xs" id="readerDeleteBtn">Delete</button>
         </div>
-        <div>
-          <div class="text-2xl font-extrabold text-white">100%</div>
-          <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Unfiltered</div>
-        </div>
+        <button type="button" class="btn btn-gold btn-xs" id="readerCopyBtn">Copy Article Text</button>
       </div>
     </div>
-  </header>
+  </div>
 
-  <!-- Filterable Video Showcase -->
-  <section id="videos" class="py-16 px-4 sm:px-6 max-w-6xl mx-auto">
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-bold">Featured Content</h2>
-        <p class="text-slate-400 text-sm mt-1">Filter by category to find what you need fast.</p>
+  <!-- Privacy Policy & Terms Modal (AdSense Compliance) -->
+  <div class="modal-backdrop" id="legalModal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-head">
+        <strong id="legalTitle" style="font-size: 16px;">Privacy Policy</strong>
+        <button class="modal-close" id="closeLegal" type="button">&times;</button>
       </div>
-      <div class="flex flex-wrap gap-2" id="filter-buttons">
-        <button data-filter="all" class="filter-btn active px-4 py-1.5 rounded-lg text-sm font-medium bg-sky-500 text-slate-950 transition">All</button>
-        <button data-filter="tech" class="filter-btn px-4 py-1.5 rounded-lg text-sm font-medium glass text-slate-300 hover:text-white transition">Tech & Reviews</button>
-        <button data-filter="trading" class="filter-btn px-4 py-1.5 rounded-lg text-sm font-medium glass text-slate-300 hover:text-white transition">Trading</button>
-        <button data-filter="guides" class="filter-btn px-4 py-1.5 rounded-lg text-sm font-medium glass text-slate-300 hover:text-white transition">Fixes & Alerts</button>
-      </div>
+      <div class="article-prose" id="legalBody"></div>
     </div>
+  </div>
 
-    <!-- Video Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-grid">
+  <div class="toast" id="toast">Done!</div>
 
-      <!-- Card 1 -->
-      <article data-category="tech" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
-        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
-          <span class="absolute top-3 left-3 bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">Tech Review</span>
-          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">15:35</span>
-          <div class="text-center p-4">
-            <p class="text-xs uppercase tracking-widest text-slate-400">Most Popular • 7.3K Views</p>
-            <p class="font-bold text-lg text-white mt-1">Casio F91W Authenticity Check</p>
-          </div>
-        </div>
-        <div class="p-5 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="font-bold text-base leading-snug mb-2">Kya Ye Original Casio Hai? F91W Unboxing & Amazon Seller Reality</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Complete breakdown on spotting genuine vs. fake Casio F91W watches and avoiding seller negligence.</p>
-          </div>
-          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
-            Watch on YouTube →
-          </a>
-        </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article data-category="guides" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
-        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
-          <span class="absolute top-3 left-3 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">Crypto Fix</span>
-          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">05:40</span>
-          <div class="text-center p-4">
-            <p class="text-xs uppercase tracking-widest text-slate-400">5.8K Views</p>
-            <p class="font-bold text-lg text-white mt-1">CoinDCX USDT Deposit Fix</p>
-          </div>
-        </div>
-        <div class="p-5 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="font-bold text-base leading-snug mb-2">CoinDCX Crypto Deposit Not Showing! USDT Error Solved Instantly</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Step-by-step troubleshooting to recover stuck USDT deposits and verify network hashes properly.</p>
-          </div>
-          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
-            Watch on YouTube →
-          </a>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article data-category="tech" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
-        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
-          <span class="absolute top-3 left-3 bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">Smartphone</span>
-          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">10:21</span>
-          <div class="text-center p-4">
-            <p class="text-xs uppercase tracking-widest text-slate-400">1.8K Views</p>
-            <p class="font-bold text-lg text-white mt-1">Samsung S20 FE 5G Honest Review</p>
-          </div>
-        </div>
-        <div class="p-5 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="font-bold text-base leading-snug mb-2">S20 FE 5G Lena Chahiye Ya Nahi? Full Honest Long-Term Review</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Real battery life, camera performance, and value-for-money verdict before you spend your money.</p>
-          </div>
-          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
-            Watch on YouTube →
-          </a>
-        </div>
-      </article>
-
-      <!-- Card 4 -->
-      <article data-category="trading" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
-        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
-          <span class="absolute top-3 left-3 bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">100 Days Trading</span>
-          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">03:19</span>
-          <div class="text-center p-4">
-            <p class="text-xs uppercase tracking-widest text-slate-400">Day 1 Series</p>
-            <p class="font-bold text-lg text-white mt-1">Stop Predicting, Manage Risk</p>
-          </div>
-        </div>
-        <div class="p-5 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="font-bold text-base leading-snug mb-2">Day 1: What Trading REALLY Is | 100 Days Trading Journey</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Why successful traders focus on probability and position sizing instead of guessing market tops.</p>
-          </div>
-          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
-            Watch on YouTube →
-          </a>
-        </div>
-      </article>
-
-      <!-- Card 5 -->
-      <article data-category="trading" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
-        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
-          <span class="absolute top-3 left-3 bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">Risk & Reward</span>
-          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">Short</span>
-          <div class="text-center p-4">
-            <p class="text-xs uppercase tracking-widest text-slate-400">Day 3 • Trading Math</p>
-            <p class="font-bold text-lg text-white mt-1">Lose More & Still Profit</p>
-          </div>
-        </div>
-        <div class="p-5 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="font-bold text-base leading-snug mb-2">Day 3: You Can Lose More Trades & Still Make Money</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">How asymmetric Risk-to-Reward ratios keep your account profitable even with a 40% win rate.</p>
-          </div>
-          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
-            Watch Short →
-          </a>
-        </div>
-      </article>
-
-      <!-- Card 6 -->
-      <article data-category="guides" class="video-card glass rounded-2xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col">
-        <div class="relative aspect-video bg-slate-900 flex items-center justify-center border-b border-slate-800">
-          <span class="absolute top-3 left-3 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-semibold px-2.5 py-0.5 rounded-md">Mac & Scam Alerts</span>
-          <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-0.5 rounded font-mono">10:33</span>
-          <div class="text-center p-4">
-            <p class="text-xs uppercase tracking-widest text-slate-400">Tech Tutorials</p>
-            <p class="font-bold text-lg text-white mt-1">Mac App Force-Delete & Scam Alerts</p>
-          </div>
-        </div>
-        <div class="p-5 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="font-bold text-base leading-snug mb-2">Mac Apps Delete Nahi Hote? 100% Problem Solved (Hindi)</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Cleanly uninstall stubborn macOS apps along with hidden residual cache files.</p>
-          </div>
-          <a href="https://www.youtube.com/@dtbytes" target="_blank" class="mt-4 inline-flex items-center text-sky-400 hover:text-sky-300 text-sm font-semibold">
-            Watch on YouTube →
-          </a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- 100 Days Trading Roadmap Section -->
-  <section id="series" class="py-16 px-4 sm:px-6 max-w-6xl mx-auto">
-    <div class="glass rounded-3xl p-8 sm:p-12 relative overflow-hidden">
-      <div class="max-w-2xl">
-        <span class="text-sky-400 text-xs font-bold uppercase tracking-widest">Flagship Series</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold mt-2 mb-4">The Disciplined Trader Framework</h2>
-        <p class="text-slate-400 text-sm sm:text-base mb-8">
-          90% of traders fail because they treat the market like a casino. Follow the core pillars from our 100-Day Trading series:
-        </p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl">
-          <div class="text-sky-400 font-extrabold text-xl mb-2">01. Identity</div>
-          <p class="text-slate-300 text-sm">Define whether you are a scalper, swing trader, or investor before risking a single rupee.</p>
-        </div>
-        <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl">
-          <div class="text-sky-400 font-extrabold text-xl mb-2">02. Risk Control</div>
-          <p class="text-slate-300 text-sm">Trading vs. Gambling: strict stop-losses and position sizing protect you from account blowups.</p>
-        </div>
-        <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl">
-          <div class="text-sky-400 font-extrabold text-xl mb-2">03. Compounding</div>
-          <p class="text-slate-300 text-sm">How consistent 3% monthly gains outperform reckless high-leverage bets over time.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Community / Newsletter CTA -->
-  <section id="resources" class="py-16 px-4 sm:px-6 max-w-4xl mx-auto text-center">
-    <h2 class="text-2xl sm:text-3xl font-bold mb-3">Get Trading Checklists & Tech Deals</h2>
-    <p class="text-slate-400 text-sm mb-6">Join the DT Bytes community for risk-reward calculators, genuine gadget links, and new video alerts.</p>
-    <form id="subscribe-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-      <input type="email" required placeholder="Enter your email..."
-             class="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-400" />
-      <button type="submit" class="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition">
-        Join Free
-      </button>
-    </form>
-    <p id="form-msg" class="text-emerald-400 text-xs mt-3 hidden">Thanks for joining DT Bytes! Check your inbox soon.</p>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-800/80 py-8 px-4 text-center text-slate-500 text-xs">
-    <p>© 2026 DT Bytes (@dtbytes). Built for Tech, Trading & Insights.</p>
-  </footer>
-
-  <!-- Interactive Filtering & Form Script -->
   <script>
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.video-card');
+    const toast = document.getElementById("toast");
+    let toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2500);
+    }
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => {
-          b.classList.remove('bg-sky-500', 'text-slate-950');
-          b.classList.add('glass', 'text-slate-300');
-        });
-        btn.classList.add('bg-sky-500', 'text-slate-950');
-        btn.classList.remove('glass', 'text-slate-300');
+    const videos = [
+      { id: "Vg_oL0yaruU", title: "Kya Ye Original Casio Hai? F91W Unboxing | Jab Amazon Seller Ne Kar Di Laparwahi!", category: "tech", catLabel: "Tech & Gadgets", views: "7,302 views", date: "Jun 2, 2025", duration: "15:35" },
+      { id: "0FtnDExMAso", title: "CoinDCX Crypto Deposit Not Showing! Solved | USDT Deposit Error Fixed Instantly", category: "crypto", catLabel: "Crypto Fix", views: "5,895 views", date: "Oct 27, 2025", duration: "05:40" },
+      { id: "YRCPiHkDm6A", title: "Best Trading Apps Guide | Exness App Download Problem Solved", category: "crypto", catLabel: "Trading Apps", views: "490 views", date: "Sep 13, 2025", duration: "04:53" },
+      { id: "PGuOMxj2tJ0", title: "Day 1 of 100 Days Trading Journey Starts Now #disciplinedtrader", category: "trading", catLabel: "100 Days Series", views: "140 views", date: "Feb 25, 2026", duration: "02:46" },
+      { id: "KyYEeMX0UZY", title: "Beware of This Viral Scam | Cartoon & Movie Clip Bundle Selling Fraud Exposed", category: "scam", catLabel: "Scam Alert", views: "53 views", date: "Dec 15, 2025", duration: "03:22" },
+      { id: "5a-ZLk650CQ", title: "We're Coming Up with Our New Learning Session | Stay Connected #disciplinedtrader", category: "trading", catLabel: "100 Days Series", views: "40 views", date: "Feb 21, 2026", duration: "00:13" },
+      { id: "opi4KpZIjQI", title: "Find Your Trading Identity Before You Trade #disciplinedtrader #education", category: "trading", catLabel: "100 Days Series", views: "39 views", date: "Mar 6, 2026", duration: "02:47" },
+      { id: "o0oy3ekP_vg", title: "Mac Apps Delete Nahi Hote? Yeh Video Dekhlo Abhi! 100% Problem Solved", category: "tech", catLabel: "macOS Fix", views: "29 views", date: "Jul 8, 2025", duration: "10:33" },
+      { id: "3XuvBxT1VEY", title: "Day 1: What Trading REALLY Is | Stop Predicting, Start Managing Risk", category: "trading", catLabel: "100 Days Series", views: "7 views", date: "Feb 24, 2026", duration: "03:19" }
+    ];
 
-        const filter = btn.getAttribute('data-filter');
-        cards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+    const videoGrid = document.getElementById("videoGrid");
+    function renderVideos(filter = "all") {
+      const list = filter === "all" ? videos : videos.filter(v => v.category === filter);
+      videoGrid.innerHTML = list.map(v => `
+        <article class="video-card">
+          <div class="video-thumb-wrap" data-vid="${v.id}" data-title="${v.title.replace(/"/g, '&quot;')}">
+            <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.title.replace(/"/g, '&quot;')}" loading="lazy" />
+            <span class="video-cat-badge">${v.catLabel}</span>
+            <span class="video-duration">${v.duration}</span>
+            <div class="play-overlay"><div class="play-circle">▶</div></div>
+          </div>
+          <div class="video-body">
+            <h3>${v.title}</h3>
+            <div class="video-meta-row">
+              <span>${v.views} • ${v.date}</span>
+              <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener noreferrer">Watch ↗</a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+      document.querySelectorAll(".video-thumb-wrap").forEach(el => el.addEventListener("click", () => openVideoModal(el.dataset.vid, el.dataset.title)));
+    }
+    renderVideos();
+
+    document.querySelectorAll("#videos .filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#videos .filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderVideos(btn.dataset.filter);
       });
     });
 
-    document.getElementById('subscribe-form').addEventListener('submit', (e) => {
+    const modal = document.getElementById("videoModal"), modalIframe = document.getElementById("modalIframe"), modalTitle = document.getElementById("modalTitle");
+    function openVideoModal(id, title) { modalTitle.textContent = title; modalIframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`; modal.classList.add("open"); }
+    function closeVideoModal() { modal.classList.remove("open"); modalIframe.src = ""; }
+    document.getElementById("closeModal").addEventListener("click", closeVideoModal);
+    modal.addEventListener("click", e => { if (e.target === modal) closeVideoModal(); });
+
+    const BLOG_STORAGE_KEY = "dtbytes_blogs_v1";
+    const SUB_STORAGE_KEY = "dtbytes_subscribers_v1";
+
+    const defaultBlogs = [
+      {
+        id: "post-crypto-survival",
+        title: "Crypto Futures in India: The 5-Point Survival Rulebook",
+        category: "Crypto & Trading",
+        tags: ["crypto", "futures", "risk-management", "india"],
+        date: "2026-11-21",
+        status: "published",
+        cover: "",
+        excerpt: "Before taking your next leveraged trade on an FIU-registered exchange, lock in these 5 non-negotiable survival rules.",
+        body: "## Why Most Beginners Blow Up\nHigh leverage turns routine market noise into instant liquidation. On Indian FIU-registered exchanges, maker/taker fees and GST apply on your **notional position size**, not just your margin.\n\n## The 5-Point Survival Checklist\n- Keep leverage strictly between **1x and 3x**.\n- Use **Limit Orders** to pay lower maker fees (~0.02%).\n- Align entries with higher-timeframe support and resistance.\n- Enforce a **30–120 minute time barrier** so stagnant scalps never turn into emotional holds.\n- Respect your daily stop-loss and close the terminal immediately.\n\n> Traders manage risk. Gamblers chase prediction."
+      },
+      {
+        id: "post-casio-authenticity",
+        title: "Buying a Casio F-91W Online in India? Check These 4 Things First",
+        category: "Tech & Gadgets",
+        tags: ["casio", "gadgets", "unboxing", "shopping"],
+        date: "2026-11-19",
+        status: "published",
+        cover: "https://i.ytimg.com/vi/Vg_oL0yaruU/hqdefault.jpg",
+        excerpt: "Lessons from our 7,300+ view Casio F-91W unboxing — how to verify authorized sellers and inspect your watch box on delivery.",
+        body: "## Don't Trust Random Marketplace Sellers\nEven iconic budget watches like the Casio F-91W get mishandled or swapped when ordered from unverified sellers.\n\n## Quick Verification Steps\n- Always verify the **authorized seller** badge before checkout.\n- Record an uninterrupted **unboxing video** from sealed shipping label to serial number.\n- Hold the right-side button for 3 seconds to check the classic `CASIo` LCD test.\n- Register your serial number on Casio India's official warranty portal."
+      },
+      {
+        id: "post-100-days-mindset",
+        title: "Day 1 Mindset: Stop Predicting, Start Managing Probabilities",
+        category: "Daily Notes",
+        tags: ["100days", "disciplinedtrader", "mindset"],
+        date: "2026-11-17",
+        status: "published",
+        cover: "https://i.ytimg.com/vi/PGuOMxj2tJ0/hqdefault.jpg",
+        excerpt: "You don't need to be right on every trade — you need a repeatable edge and disciplined risk sizing over 100 trades.",
+        body: "## Trading Is a Business of Probabilities\nImagine risking ₹500 per trade with a 1:2 reward-to-risk ratio. Even if you win only 6 out of 10 trades, your winners make ₹6,000 while your 4 losses cost ₹2,000 — leaving a net **+₹4,000** edge without predicting every candle.\n\n> Write this in your notebook before every session: I am not here to predict. I am here to manage risk."
+      }
+    ];
+
+    let blogs = JSON.parse(localStorage.getItem(BLOG_STORAGE_KEY) || "null") || defaultBlogs;
+    let subscribers = JSON.parse(localStorage.getItem(SUB_STORAGE_KEY) || "[]");
+    let activeBlogCat = "all";
+    let currentReaderId = null;
+
+    function saveBlogs() {
+      localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(blogs));
+      updateBlogStats();
+      renderBlogs();
+    }
+
+    function updateBlogStats() {
+      const pubCount = blogs.filter(b => b.status === "published").length;
+      document.getElementById("heroBlogCount").textContent = `${pubCount} Post${pubCount === 1 ? "" : "s"}`;
+      document.getElementById("subCountLabel").textContent = `${subscribers.length} local subscriber${subscribers.length === 1 ? "" : "s"} saved`;
+    }
+
+    function calcReadTime(text) {
+      const words = (text || "").trim().split(/\s+/).filter(Boolean).length;
+      return `${Math.max(1, Math.ceil(words / 200))} min read`;
+    }
+
+    function escapeHtml(str) {
+      return (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    function renderMarkdown(md) {
+      let html = escapeHtml(md || "");
+      html = html.replace(/```([\s\S]*?)```/g, (_, code) => `<pre><code>${code.trim()}</code></pre>`);
+      html = html.replace(/^### (.*)$/gm, "<h3>$1</h3>");
+      html = html.replace(/^## (.*)$/gm, "<h2>$1</h2>");
+      html = html.replace(/^> (.*)$/gm, "<blockquote>$1</blockquote>");
+      html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+      html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
+      html = html.replace(/`([^`]+)`/g, "<code style='background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:5px;font-family:JetBrains Mono,monospace;font-size:13px;'>$1</code>");
+      html = html.replace(/^- (.*)$/gm, "<li>$1</li>");
+      html = html.replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`);
+      return html.split(/\n{2,}/).map(block => {
+        if (/^<(h2|h3|ul|blockquote|pre)/.test(block.trim())) return block;
+        return `<p>${block.replace(/\n/g, "<br/>")}</p>`;
+      }).join("");
+    }
+
+    function renderBlogs() {
+      const q = (document.getElementById("blogSearch").value || "").toLowerCase().trim();
+      const filtered = blogs.filter(b => {
+        if (activeBlogCat === "drafts" && b.status !== "draft") return false;
+        if (activeBlogCat !== "drafts" && b.status !== "published") return false;
+        if (activeBlogCat !== "all" && activeBlogCat !== "drafts" && b.category !== activeBlogCat) return false;
+        if (q) {
+          const hay = `${b.title} ${b.excerpt} ${b.body} ${(b.tags || []).join(" ")}`.toLowerCase();
+          return hay.includes(q);
+        }
+        return true;
+      });
+
+      const grid = document.getElementById("blogGrid");
+      if (!filtered.length) {
+        grid.innerHTML = `<div class="panel-card" style="grid-column:1/-1; text-align:center; padding:42px;">
+          <h3 style="margin-bottom:8px;">No posts found here yet</h3>
+          <p style="color:var(--text-secondary); margin-bottom:18px;">Click "+ Write / Upload Blog" to publish your first post in this view.</p>
+          <button type="button" class="btn btn-gold btn-sm" onclick="openComposer()">+ Create New Post</button>
+        </div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(b => `
+        <article class="blog-card">
+          <div class="blog-cover" onclick="openReader('${b.id}')">
+            ${b.cover ? `<img src="${b.cover}" alt="${escapeHtml(b.title)}" loading="lazy" />` : `<div class="blog-cover-placeholder"><span>DT BYTES</span><span style="font-size:11px;font-family:JetBrains Mono,monospace;color:var(--text-secondary);">${escapeHtml(b.category)}</span></div>`}
+            <span class="blog-status-pill ${b.status === "draft" ? "pill-draft" : "pill-published"}">${b.status}</span>
+          </div>
+          <div class="blog-card-body">
+            <div>
+              <div class="blog-card-meta">
+                <span>${escapeHtml(b.category)}</span>
+                <span>${b.date} • ${calcReadTime(b.body)}</span>
+              </div>
+              <h3 style="margin:8px 0;" onclick="openReader('${b.id}')">${escapeHtml(b.title)}</h3>
+              <p>${escapeHtml(b.excerpt || b.body.slice(0, 140))}</p>
+            </div>
+            <div>
+              <div class="blog-tags" style="margin-bottom:12px;">
+                ${(b.tags || []).slice(0, 4).map(t => `<span class="blog-tag">#${escapeHtml(t)}</span>`).join("")}
+              </div>
+              <div class="blog-card-footer">
+                <button type="button" class="btn btn-gold btn-xs" onclick="openReader('${b.id}')">Read Article →</button>
+                <button type="button" class="btn btn-glass btn-xs" onclick="openComposer('${b.id}')">Edit</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    document.getElementById("newsletterForm").addEventListener("submit", e => {
       e.preventDefault();
-      document.getElementById('form-msg').classList.remove('hidden');
-      e.target.reset();
+      const input = document.getElementById("subEmail");
+      const email = input.value.trim().toLowerCase();
+      if (!email) return;
+      if (!subscribers.some(s => s.email === email)) {
+        subscribers.unshift({ email, date: new Date().toISOString().slice(0, 10) });
+        localStorage.setItem(SUB_STORAGE_KEY, JSON.stringify(subscribers));
+        updateBlogStats();
+        showToast("Subscribed to DT Bytes Newsletter!");
+      } else {
+        showToast("You're already subscribed!");
+      }
+      input.value = "";
     });
+
+    document.getElementById("exportSubsBtn").addEventListener("click", () => {
+      if (!subscribers.length) return showToast("No subscribers yet to export.");
+      const csv = "email,subscribed_date\n" + subscribers.map(s => `${s.email},${s.date}`).join("\n");
+      downloadFile("dtbytes-subscribers.csv", csv, "text/csv");
+      showToast("Exported dtbytes-subscribers.csv");
+    });
+
+    document.querySelectorAll("#blogFilterBar .filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#blogFilterBar .filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeBlogCat = btn.dataset.bcat;
+        renderBlogs();
+      });
+    });
+    document.getElementById("blogSearch").addEventListener("input", renderBlogs);
+
+    const composerModal = document.getElementById("composerModal");
+    const blogForm = document.getElementById("blogForm");
+    const blogBodyEl = document.getElementById("blogBody");
+    let uploadedCoverDataUrl = "";
+
+    function updateWordCount() {
+      const words = (blogBodyEl.value || "").trim().split(/\s+/).filter(Boolean).length;
+      document.getElementById("wordCountBadge").textContent = `${words} words • ${Math.max(1, Math.ceil(words / 200))} min read`;
+    }
+    blogBodyEl.addEventListener("input", updateWordCount);
+
+    window.openComposer = function(editId = null) {
+      blogForm.reset();
+      uploadedCoverDataUrl = "";
+      document.getElementById("editBlogId").value = "";
+      if (editId) {
+        const post = blogs.find(b => b.id === editId);
+        if (post) {
+          document.getElementById("composerHeading").textContent = "Edit Blog Post";
+          document.getElementById("editBlogId").value = post.id;
+          document.getElementById("blogTitle").value = post.title;
+          document.getElementById("blogCategory").value = post.category;
+          document.getElementById("blogTags").value = (post.tags || []).join(", ");
+          document.getElementById("blogCoverUrl").value = post.cover && post.cover.startsWith("http") ? post.cover : "";
+          if (post.cover && post.cover.startsWith("data:")) uploadedCoverDataUrl = post.cover;
+          document.getElementById("blogExcerpt").value = post.excerpt || "";
+          blogBodyEl.value = post.body || "";
+        }
+      } else {
+        document.getElementById("composerHeading").textContent = "DT Bytes Blog Studio — Write or Upload";
+      }
+      updateWordCount();
+      composerModal.classList.add("open");
+    };
+
+    function closeComposer() { composerModal.classList.remove("open"); }
+    document.getElementById("openComposerBtn").addEventListener("click", () => openComposer());
+    document.getElementById("closeComposer").addEventListener("click", closeComposer);
+    document.getElementById("cancelComposerBtn").addEventListener("click", closeComposer);
+    composerModal.addEventListener("click", e => { if (e.target === composerModal) closeComposer(); });
+
+    document.querySelectorAll(".fmt-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const snippet = btn.dataset.md.replace(/\\n/g, "\n");
+        const start = blogBodyEl.selectionStart, end = blogBodyEl.selectionEnd;
+        blogBodyEl.value = blogBodyEl.value.slice(0, start) + snippet + blogBodyEl.value.slice(end);
+        blogBodyEl.focus();
+        updateWordCount();
+      });
+    });
+
+    document.getElementById("blogCoverFile").addEventListener("change", e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => { uploadedCoverDataUrl = ev.target.result; showToast("Cover image attached!"); };
+      reader.readAsDataURL(file);
+    });
+
+    function saveBlogPost(status) {
+      const title = document.getElementById("blogTitle").value.trim();
+      const body = blogBodyEl.value.trim();
+      if (!title || !body) return showToast("Please enter a title and content.");
+      const editId = document.getElementById("editBlogId").value;
+      const tags = document.getElementById("blogTags").value.split(",").map(t => t.trim()).filter(Boolean);
+      const cover = uploadedCoverDataUrl || document.getElementById("blogCoverUrl").value.trim();
+      const excerpt = document.getElementById("blogExcerpt").value.trim() || body.replace(/[#>*`]/g, "").slice(0, 150);
+      const category = document.getElementById("blogCategory").value;
+
+      if (editId) {
+        const idx = blogs.findIndex(b => b.id === editId);
+        if (idx > -1) blogs[idx] = { ...blogs[idx], title, category, tags, cover, excerpt, body, status };
+      } else {
+        blogs.unshift({ id: "post-" + Date.now(), title, category, tags, cover, excerpt, body, status, date: new Date().toISOString().slice(0, 10) });
+      }
+      saveBlogs();
+      closeComposer();
+      showToast(status === "draft" ? "Saved to Drafts!" : "Blog published live!");
+    }
+
+    blogForm.addEventListener("submit", e => { e.preventDefault(); saveBlogPost("published"); });
+    document.getElementById("saveDraftBtn").addEventListener("click", () => saveBlogPost("draft"));
+
+    function handleUploadedFiles(fileList, autoPublish) {
+      const files = Array.from(fileList || []);
+      if (!files.length) return;
+      if (files.length === 1 && !autoPublish) {
+        const f = files[0];
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const raw = ev.target.result || "";
+          const cleanName = f.name.replace(/\.(md|txt|html?)$/i, "").replace(/[-_]+/g, " ");
+          const headingMatch = raw.match(/^#\s+(.+)$/m);
+          document.getElementById("blogTitle").value = headingMatch ? headingMatch[1].trim() : cleanName;
+          blogBodyEl.value = headingMatch ? raw.replace(/^#\s+.+\n?/, "").trim() : raw.trim();
+          updateWordCount();
+          showToast(`Loaded "${f.name}" into editor!`);
+        };
+        reader.readAsText(f);
+      } else {
+        let loaded = 0;
+        files.forEach((f, i) => {
+          const reader = new FileReader();
+          reader.onload = ev => {
+            const raw = (ev.target.result || "").trim();
+            const cleanName = f.name.replace(/\.(md|txt|html?)$/i, "").replace(/[-_]+/g, " ");
+            const headingMatch = raw.match(/^#\s+(.+)$/m);
+            const title = headingMatch ? headingMatch[1].trim() : cleanName;
+            const body = headingMatch ? raw.replace(/^#\s+.+\n?/, "").trim() : raw;
+            blogs.unshift({
+              id: `post-${Date.now()}-${i}`, title, category: "Daily Notes", tags: ["uploaded", "dtbytes"],
+              cover: "", excerpt: body.replace(/<[^>]*>/g, "").replace(/[#>*`]/g, "").slice(0, 150),
+              body, status: "published", date: new Date().toISOString().slice(0, 10)
+            });
+            loaded++;
+            if (loaded === files.length) { saveBlogs(); closeComposer(); showToast(`Published ${loaded} uploaded blog${loaded > 1 ? "s" : ""}!`); }
+          };
+          reader.readAsText(f);
+        });
+      }
+    }
+
+    document.getElementById("quickUploadInput").addEventListener("change", e => { handleUploadedFiles(e.target.files, true); e.target.value = ""; });
+    document.getElementById("modalFileUpload").addEventListener("change", e => { handleUploadedFiles(e.target.files, e.target.files.length > 1); e.target.value = ""; });
+
+    function downloadFile(filename, content, type) {
+      const blob = new Blob([content], { type });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    document.getElementById("exportBlogsBtn").addEventListener("click", () => {
+      downloadFile("dtbytes-blogs-backup.json", JSON.stringify(blogs, null, 2), "application/json");
+      showToast("Exported dtbytes-blogs-backup.json");
+    });
+
+    document.getElementById("importBlogsInput").addEventListener("change", e => {
+      const f = e.target.files[0];
+      if (!f) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        try {
+          const parsed = JSON.parse(ev.target.result);
+          if (Array.isArray(parsed)) { blogs = parsed; saveBlogs(); showToast(`Imported ${parsed.length} posts!`); }
+        } catch { showToast("Invalid JSON backup file."); }
+      };
+      reader.readAsText(f);
+      e.target.value = "";
+    });
+
+    const readerModal = document.getElementById("readerModal");
+    window.openReader = function(id) {
+      const post = blogs.find(b => b.id === id);
+      if (!post) return;
+      currentReaderId = id;
+      document.getElementById("readerTitle").textContent = post.title;
+      document.getElementById("readerMeta").textContent = `${post.category} • ${post.date} • ${calcReadTime(post.body)} • By Debasish Mondal (@dtbytes)`;
+      document.getElementById("readerCoverWrap").innerHTML = post.cover ? `<img src="${post.cover}" alt="" style="width:100%;max-height:280px;object-fit:cover;display:block;" />` : "";
+      document.getElementById("readerContent").innerHTML = renderMarkdown(post.body);
+      readerModal.classList.add("open");
+    };
+    function closeReader() { readerModal.classList.remove("open"); }
+    document.getElementById("closeReader").addEventListener("click", closeReader);
+    readerModal.addEventListener("click", e => { if (e.target === readerModal) closeReader(); });
+    document.getElementById("readerEditBtn").addEventListener("click", () => { closeReader(); openComposer(currentReaderId); });
+    document.getElementById("readerDeleteBtn").addEventListener("click", () => {
+      if (!currentReaderId) return;
+      blogs = blogs.filter(b => b.id !== currentReaderId);
+      saveBlogs(); closeReader(); showToast("Post deleted.");
+    });
+    document.getElementById("readerCopyBtn").addEventListener("click", () => {
+      const post = blogs.find(b => b.id === currentReaderId);
+      if (!post) return;
+      navigator.clipboard?.writeText(`${post.title}\n\n${post.body}`).catch(() => {});
+      showToast("Article text copied!");
+    });
+
+    // Legal Modals (AdSense Compliance)
+    const legalModal = document.getElementById("legalModal"), legalTitle = document.getElementById("legalTitle"), legalBody = document.getElementById("legalBody");
+    const privacyHtml = `
+      <p><strong>Effective Date:</strong> November 2026</p>
+      <p>DT Bytes (<strong>@dtbytes</strong>), operated by Debasish Mondal, respects your privacy. This Privacy Policy explains how information is collected and used when you visit this website.</p>
+      <h3>1. Google AdSense &amp; Third-Party Advertising Cookies</h3>
+      <p>We use Google AdSense to display advertisements. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this website or other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to our site and/or other sites on the Internet.</p>
+      <p>You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
+      <h3>2. Newsletter &amp; Contact Information</h3>
+      <p>If you subscribe to the DT Bytes Newsletter or email us at <a href="mailto:dtbytes@outlook.com">dtbytes@outlook.com</a>, your email address is used solely to deliver requested updates or respond to your inquiry. We never sell your personal data.</p>
+      <h3>3. External Links</h3>
+      <p>This website links to official DT Bytes profiles on YouTube, Instagram, Facebook, X, and GitHub. We are not responsible for the privacy practices of external platforms.</p>
+      <h3>4. Contact</h3>
+      <p>For privacy requests or questions, email <a href="mailto:dtbytes@outlook.com">dtbytes@outlook.com</a>.</p>
+    `;
+    const termsHtml = `
+      <h3>Educational &amp; Financial Disclaimer</h3>
+      <p>All articles, videos, calculators, and trading checklists published on DT Bytes (<strong>@dtbytes</strong>) are strictly for educational and informational purposes. Nothing on this website constitutes financial, investment, tax, or legal advice.</p>
+      <h3>Risk Disclosure</h3>
+      <p>Cryptocurrency, derivatives, and leveraged futures trading carry substantial risk of capital loss. Always verify current fee schedules and regulatory status directly with FIU-registered exchanges and consult a qualified financial advisor before trading.</p>
+      <h3>Copyright</h3>
+      <p>Original guides, articles, and tools on this website are the intellectual property of DT Bytes (Debasish Mondal). For licensing or collaboration inquiries, contact <a href="mailto:dtbytes@outlook.com">dtbytes@outlook.com</a>.</p>
+    `;
+    function openLegal(type) {
+      legalTitle.textContent = type === "privacy" ? "Privacy Policy — DT Bytes" : "Terms & Financial Disclaimer — DT Bytes";
+      legalBody.innerHTML = type === "privacy" ? privacyHtml : termsHtml;
+      legalModal.classList.add("open");
+    }
+    function closeLegal() { legalModal.classList.remove("open"); }
+    document.getElementById("openPrivacyBtn").addEventListener("click", () => openLegal("privacy"));
+    document.getElementById("openTermsBtn").addEventListener("click", () => openLegal("terms"));
+    document.getElementById("closeLegal").addEventListener("click", closeLegal);
+    legalModal.addEventListener("click", e => { if (e.target === legalModal) closeLegal(); });
+
+    updateBlogStats();
+    renderBlogs();
+
+    const checkItems = document.querySelectorAll(".check-item"), checkProgress = document.getElementById("checkProgress");
+    checkItems.forEach(item => {
+      item.addEventListener("click", () => {
+        item.classList.toggle("checked");
+        item.querySelector(".check-box").textContent = item.classList.contains("checked") ? "✓" : "";
+        checkProgress.textContent = `${document.querySelectorAll(".check-item.checked").length} / 5 Ready`;
+      });
+    });
+
+    const inputRisk = document.getElementById("inputRisk"), inputWinRate = document.getElementById("inputWinRate"), inputRR = document.getElementById("inputRR"), inputTrades = document.getElementById("inputTrades");
+    function updateCalc() {
+      const risk = +inputRisk.value, winRate = +inputWinRate.value, rr = +inputRR.value, trades = +inputTrades.value;
+      document.getElementById("valRisk").textContent = `₹${risk.toLocaleString("en-IN")}`;
+      document.getElementById("valWinRate").textContent = `${winRate}%`;
+      document.getElementById("valRR").textContent = `1 : ${rr.toFixed(1)}`;
+      document.getElementById("valTrades").textContent = `${trades} trades`;
+      const wins = Math.round(trades * (winRate / 100)), losses = trades - wins;
+      const net = (wins * risk * rr) - (losses * risk);
+      const exp = ((winRate / 100) * rr) - (1 - winRate / 100);
+      const resNet = document.getElementById("resNet");
+      resNet.textContent = `${net >= 0 ? "+" : "-"}₹${Math.abs(Math.round(net)).toLocaleString("en-IN")}`;
+      resNet.className = net >= 0 ? "" : "negative";
+      const resExp = document.getElementById("resExp");
+      resExp.textContent = `${exp >= 0 ? "+" : ""}${exp.toFixed(2)}R`;
+      resExp.className = exp >= 0 ? "gold" : "negative";
+      document.getElementById("resWL").textContent = `${wins}W / ${losses}L`;
+      document.getElementById("resTotalRisk").textContent = `₹${(trades * risk).toLocaleString("en-IN")}`;
+    }
+    [inputRisk, inputWinRate, inputRR, inputTrades].forEach(el => el.addEventListener("input", updateCalc));
+    updateCalc();
+
+    function copyHandle() { navigator.clipboard?.writeText("@dtbytes").catch(() => {}); showToast("Copied @dtbytes to clipboard!"); }
+    document.getElementById("copyHandleNav").addEventListener("click", copyHandle);
+    document.getElementById("copyHandleCard").addEventListener("click", copyHandle);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") { closeVideoModal(); closeComposer(); closeReader(); closeLegal(); } });
+
+    const tiltCard = document.getElementById("tiltCard");
+    if (tiltCard && window.matchMedia("(pointer: fine)").matches) {
+      tiltCard.addEventListener("mousemove", e => { const r = tiltCard.getBoundingClientRect(); tiltCard.style.transform = `perspective(900px) rotateY(${((e.clientX - r.left) / r.width - 0.5) * 8}deg) rotateX(${-((e.clientY - r.top) / r.height - 0.5) * 8}deg)`; });
+      tiltCard.addEventListener("mouseleave", () => { tiltCard.style.transform = "perspective(900px) rotateY(0deg) rotateX(0deg)"; });
+    }
+
+    const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); }), { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    const canvas = document.getElementById("ambient-canvas"), ctx = canvas.getContext("2d"); let particles = [];
+    function resizeCanvas() {
+      canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+      particles = Array.from({ length: Math.min(55, Math.floor(window.innerWidth / 28)) }, () => ({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35, r: Math.random() * 1.8 + 0.6 }));
+    }
+    function drawCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i]; p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = "rgba(212, 175, 55, 0.55)"; ctx.fill();
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j], d = Math.hypot(p.x - q.x, p.y - q.y);
+          if (d < 130) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.strokeStyle = `rgba(212, 175, 55, ${0.12 * (1 - d / 130)})`; ctx.lineWidth = 0.7; ctx.stroke(); }
+        }
+      }
+      requestAnimationFrame(drawCanvas);
+    }
+    window.addEventListener("resize", resizeCanvas); resizeCanvas(); drawCanvas();
   </script>
 </body>
 </html>
